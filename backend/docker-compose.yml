@@ -4,9 +4,9 @@ services:
   postgres:
     image: postgres:15-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      POSTGRES_DB: ${POSTGRES_DB:-kisandb}
+    DATABASE_URL: ${DATABASE_URL}
+    env_file:
+    - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:

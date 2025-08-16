@@ -1,11 +1,11 @@
 # /services/user-service/app/database.py
-
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Connection string for our PostgreSQL database
-DATABASE_URL = "postgresql://user:password@postgres/kisandb"
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@postgres:5432/kisandb")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

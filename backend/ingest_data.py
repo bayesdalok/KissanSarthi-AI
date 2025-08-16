@@ -1,5 +1,5 @@
 # ingest_data.py
-
+import os
 import pandas as pd
 from sqlalchemy import create_engine
 import sys
@@ -15,7 +15,7 @@ ICRISAT_DATA_PATH = "C:/Users/ALOK/Desktop/statathon/CapitalOne/ICRISAT-District
 # Add other file paths as needed
 
 # --- Database Connection ---
-DATABASE_URL = "postgresql://user:password@localhost:5432/kisandb"
+DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL)
 
 def ingest_kcc_transcripts(file_path):
