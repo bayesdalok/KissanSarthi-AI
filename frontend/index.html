@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kisan-Sarthi AI - भारतीय किसानों के लिए AI-powered कृषि सलाहकार">
+    <meta name="keywords" content="कृषि, farming, किसान, agriculture, India, Kisan, Sarthi">
+    <title>Kisan-Sarthi AI | AI-Powered Agricultural Advisor</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link" data-key="skipLink">मुख्य सामग्री पर जाएं</a>
+    <!-- Enhanced Header -->
+    <header class="header" role="banner">
+        <nav class="nav-container" role="navigation" aria-label="मुख्य नेवीगेशन">
+            <a href="#" class="logo" aria-label="Kisan-Sarthi AI होम">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13V7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a7 7 0 0 1-7 7z"></path><path d="M12 10V3"></path></svg>
+                Kisan-Sarthi AI
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#services" data-key="navServices" aria-label="हमारी सेवाएं देखें">सेवाएं</a></li>
+                <li><a href="#mandi" data-key="navMandi" aria-label="मंडी की जानकारी देखें">मंडी</a></li>
+                <li><a href="#chatbot" data-key="navChatbot" aria-label="AI सहायक से बात करें">AI सहायक</a></li>
+                <li><a href="#support" data-key="navSupport" aria-label="सहायता पाएं">सहायता</a></li>
+                <li><a href="#" id="policyLink" data-key="navPolicies" aria-label="सरकारी योजनाएं देखें">नीतियां</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <select id="langSwitcher" aria-label="भाषा चुनें">
+                    <option value="hi">हिंदी</option>
+                    <option value="en">English</option>
+                    <option value="gu">ગુજરાતી</option>
+                    <option value="mr">मराठी</option>
+                </select>
+                
+                <button id="darkModeToggle" aria-label="डार्क मोड टॉगल करें" title="डार्क मोड टॉगल करें">
+                    <svg class="icon icon-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" style="display: none;"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- Policies Marquee -->
+    <div class="policies-marquee" role="complementary" aria-label="नवीनतम नीतियां">
+        <div data-key="marqueeText">📢 PM-KISAN योजना विस्तार: अब ₹8,000 प्रति वर्ष | फसल बीमा में 50% तक की छूट | KCC की लिमिट बढ़कर ₹3 लाख | ऑर्गेनिक खेती के लिए मुफ्त सर्टिफिकेशन</div>
+    </div>
+    <main id="main-content">
+        <!-- Enhanced Hero Section -->
+        <section class="hero in-view">
+            <div class="hero-content">
+                <h1 data-key="heroTitle">🌾 Kisan-Sarthi AI - आपका डिजिटल कृषि सारथी</h1>
+                <p data-key="heroSubtitle">AI की शक्ति से आधुनिक खेती करें। मौसम की जानकारी से लेकर बाज़ार के भाव तक, सब कुछ एक ही जगह।</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#chatbot" class="btn btn-primary" aria-label="अभी AI सहायक से बात करें">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+                        <span data-key="heroBtnStart">अभी शुरू करें</span>
+                    </a>
+                    <a href="#services" class="btn btn-secondary" aria-label="सेवाओं के बारे में जानें">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                        <span data-key="heroBtnLearn">और जानें</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Enhanced Services Section -->
+        <section id="services" class="services">
+            <h2 class="section-title" data-key="servicesTitle">🛠️ हमारी सेवाएं</h2>
+            <div class="services-grid">
+                <article class="service-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">🌡️</div>
+                    <h3 data-key="service1Title">मौसम पूर्वानुमान</h3>
+                    <p data-key="service1Desc">15 दिन तक का सटीक मौसम पूर्वानुमान, वर्षा की संभावना, और खेती के लिए सुझाव।</p>
+                </article>
+                
+                <article class="service-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">🌱</div>
+                    <h3 data-key="service2Title">फसल सलाह</h3>
+                    <p data-key="service2Desc">AI-आधारित फसल चयन, बुआई का समय, और उत्पादकता बढ़ाने के तरीके।</p>
+                </article>
+                
+                <article class="service-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">🐛</div>
+                    <h3 data-key="service3Title">कीट-रोग पहचान</h3>
+                    <p data-key="service3Desc">फसल की फोटो अपलोड करके कीट-रोग की तुरंत पहचान और उपचार के सुझाव।</p>
+                </article>
+                
+                <article class="service-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">💰</div>
+                    <h3 data-key="service4Title">बाज़ार की जानकारी</h3>
+                    <p data-key="service4Desc">रियल-टाइम बाज़ार के भाव, मांग-आपूर्ति की स्थिति, और बेचने का सही समय।</p>
+                </article>
+            </div>
+        </section>
+        <!-- Enhanced Mandi Section -->
+        <section id="mandi" class="mandi" style="background: var(--bg-light);">
+            <h2 class="section-title" data-key="mandiTitle">🏪 आज के बाज़ार भाव</h2>
+            <div class="mandi-header">
+                <p style="margin-bottom: 1rem;"><span data-key="mandiLocation">वडोदरा मंडी</span> - <span id="currentDate"></span></p>
+                <button class="btn btn-primary" id="openSellerModalBtn" aria-label="अपना उत्पाद बेचने के लिए फॉर्म भरें">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    <span data-key="sellProductBtn">अपना उत्पाद बेचें</span>
+                </button>
+            </div>
+            
+            <div class="produce-grid" id="produce-grid-container">
+                <!-- Market data will be dynamically inserted here -->
+            </div>
+        </section>
+        <!-- Enhanced Chatbot Section -->
+        <section id="chatbot" class="chatbot-section">
+            <h2 class="section-title" data-key="chatbotTitle">🤖 AI कृषि सलाहकार</h2>
+            <div class="chatbot-demo">
+                <div class="chat-header">
+                    <span data-key="chatbotHeader">Kisan-Sarthi AI Assistant</span>
+                    <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;" data-key="chatbotOnline">
+                        🟢 ऑनलाइन - तुरंत जवाब पाएं
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="चैट संदेश">
+                    <div class="message bot" data-key="chatbotWelcome">
+                        नमस्ते! मैं आपका Kisan-Sarthi AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" 
+                           id="messageInput" 
+                           placeholder="यहां अपना सवाल लिखें..." 
+                           aria-label="संदेश टाइप करें"
+                           maxlength="500"
+                           data-key="chatbotPlaceholder"
+                           >
+                    <button class="send-btn" 
+                            aria-label="संदेश भेजें"
+                            title="संदेश भेजें">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                    </button>
+                </div>
+                
+                <div style="padding: 1rem; background: #e8f5e8; text-align: center; font-size: 0.9rem;">
+                    <p><strong data-key="suggestedQuestions">सुझावित प्रश्न:</strong></p>
+                    <div id="predefinedQuestions" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
+                        <button class="btn btn-secondary" style="font-size: 0.8rem;" data-question-key="qWeather">🌤️ <span data-key="qWeatherText">मौसम</span></button>
+                        <button class="btn btn-secondary" style="font-size: 0.8rem;" data-question-key="qPrice">💰 <span data-key="qPriceText">भाव</span></button>
+                        <button class="btn btn-secondary" style="font-size: 0.8rem;" data-question-key="qPest">🐛 <span data-key="qPestText">कीड़े</span></button>
+                        <button class="btn btn-secondary" style="font-size: 0.8rem;" data-question-key="qScheme">🏦 <span data-key="qSchemeText">योजना</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Enhanced Support Section -->
+        <section id="support" class="support" style="background: var(--bg-light);">
+            <h2 class="section-title" data-key="supportTitle">🤝 सहायता केंद्र</h2>
+            <div class="support-options">
+                <article class="support-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">📞</div>
+                    <h3 data-key="support1Title">हेल्पलाइन</h3>
+                    <p><strong>Toll Free:</strong> 1800-123-4567</p>
+                    <p><strong>WhatsApp:</strong> +91-9876543210</p>
+                    <p data-key="support1Desc">24x7 उपलब्ध</p>
+                </article>
+                
+                <article class="support-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">👨‍🌾</div>
+                    <h3 data-key="support2Title">विशेषज्ञ सलाह</h3>
+                    <p data-key="support2Desc">अनुभवी कृषि विशेषज्ञों से वीडियो कॉल पर सलाह लें।</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.934a.5.5 0 0 0-.777-.416L16 11Z"></path><rect x="2" y="7" width="14" height="10" rx="2"></rect></svg>
+                        <span data-key="bookAppointmentBtn">अपॉइंटमेंट बुक करें</span>
+                    </button>
+                </article>
+                
+                <article class="support-card" tabindex="0">
+                    <div class="card-icon" aria-hidden="true">🎓</div>
+                    <h3 data-key="support3Title">प्रशिक्षण कार्यक्रम</h3>
+                    <p data-key="support3Desc">नई तकनीकों के लिए मुफ्त ऑनलाइन और ऑफलाइन प्रशिक्षण।</p>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                        <span data-key="viewCoursesBtn">कोर्स देखें</span>
+                    </button>
+                </article>
+            </div>
+        </section>
+        <!-- Farmer Success Stories -->
+        <section class="testimonials">
+            <h2 class="section-title" data-key="storiesTitle">🌟 सफलता की कहानियां</h2>
+            <div class="services-grid">
+                <article class="service-card testimonial" tabindex="0">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 1rem;">रा</div>
+                        <div>
+                            <h4 data-key="farmer1Name">राजेश पटेल</h4>
+                            <p style="color: #666; font-size: 0.9rem;" data-key="farmer1Location">वडोदरा, गुजरात</p>
+                        </div>
+                    </div>
+                    <p data-key="farmer1Story">"Kisan-Sarthi AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।"</p>
+                    <div style="color: var(--accent-orange); margin-top: 1rem;">⭐⭐⭐⭐⭐</div>
+                </article>
+                
+                <article class="service-card testimonial" tabindex="0">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 1rem;">सु</div>
+                        <div>
+                            <h4 data-key="farmer2Name">सुनीता शर्मा</h4>
+                            <p style="color: #666; font-size: 0.9rem;" data-key="farmer2Location">आणंद, गुजरात</p>
+                        </div>
+                    </div>
+                    <p data-key="farmer2Story">"मौसम की सही जानकारी से मैंने बारिश से पहले अपनी फसल बचा ली। बाज़ार के भाव भी सही समय पर मिल जाते हैं।"</p>
+                    <div style="color: var(--accent-orange); margin-top: 1rem;">⭐⭐⭐⭐⭐</div>
+                </article>
+                
+                <article class="service-card testimonial" tabindex="0">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-right: 1rem;">वि</div>
+                        <div>
+                            <h4 data-key="farmer3Name">विकास गुप्ता</h4>
+                            <p style="color: #666; font-size: 0.9rem;" data-key="farmer3Location">भरूच, गुजरात</p>
+                        </div>
+                    </div>
+                    <p data-key="farmer3Story">"KCC लोन की पूरी प्रक्रिया आसान हो गई। सरकारी योजनाओं की जानकारी भी मिल जाती है।"</p>
+                    <div style="color: var(--accent-orange); margin-top: 1rem;">⭐⭐⭐⭐⭐</div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p data-key="footerText">An Initiative For The Building Blocks Of Our Country - FARMERS</p>
+    </footer>
+    <!-- Enhanced Floating Chatbot -->
+    <div class="chatbot-mini" id="floatingChatbot" role="button" tabindex="0" aria-label="चैटबॉट खोलें" title="AI सहायक से बात करें">
+        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" fill="url(#chatbotGradient)" stroke="#fff" stroke-width="3"/>
+            <ellipse cx="24" cy="30" rx="10" ry="5" fill="#fff" opacity="0.2"/>
+            <circle cx="18" cy="22" r="3" fill="#fff"/>
+            <circle cx="30" cy="22" r="3" fill="#fff"/>
+            <ellipse cx="24" cy="28" rx="4" ry="2" fill="#fff"/>
+            <defs>
+                <linearGradient id="chatbotGradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4caf50"/>
+                    <stop offset="1" stop-color="#2e7d32"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <!-- Enhanced Seller Form Modal -->
+    <div id="sellerModal" class="modal" role="dialog" aria-labelledby="sellerModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" aria-label="मोडल बंद करें" title="बंद करें">&times;</span>
+            <h2 id="sellerModalTitle" data-key="modalSellTitle">🛒 अपना उत्पाद बेचें</h2>
+            <p style="margin-bottom: 2rem; color: #666;" data-key="modalSellDesc">अपने उत्पाद की जानकारी भरें और बेहतर दाम पाएं</p>
+            
+            <form id="sellerForm" novalidate>
+                <label for="sellerName">
+                    <span data-key="formName">नाम</span> <span style="color: red;">*</span>
+                    <input type="text" id="sellerName" name="name" required aria-describedby="nameError">
+                    <div id="nameError" class="error" role="alert"></div>
+                </label>
+                
+                <label for="sellerProduct">
+                    <span data-key="formProduct">उत्पाद</span> <span style="color: red;">*</span>
+                    <select id="sellerProduct" name="product" required aria-describedby="productError">
+                        <option value="" data-key="formProductSelect">उत्पाद चुनें</option>
+                        <option value="गेहूं" data-key="formProductWheat">गेहूं</option>
+                        <option value="धान" data-key="formProductPaddy">धान</option>
+                        <option value="प्याज" data-key="formProductOnion">प्याज</option>
+                        <option value="टमाटर" data-key="formProductTomato">टमाटर</option>
+                        <option value="आलू" data-key="formProductPotato">आलू</option>
+                        <option value="हरी मिर्च" data-key="formProductChilli">हरी मिर्च</option>
+                        <option value="अन्य" data-key="formProductOther">अन्य</option>
+                    </select>
+                    <div id="productError" class="error" role="alert"></div>
+                </label>
+                
+                <label for="sellerQuantity">
+                    <span data-key="formQuantity">मात्रा (क्विंटल/किलो)</span> <span style="color: red;">*</span>
+                    <input type="text" id="sellerQuantity" name="quantity" required aria-describedby="quantityError" placeholder="e.g., 10 क्विंटल or 50 किलो">
+                    <div id="quantityError" class="error" role="alert"></div>
+                </label>
+                
+                <label for="sellerPrice">
+                    <span data-key="formPrice">अपेक्षित मूल्य (₹ प्रति यूनिट)</span> <span style="color: red;">*</span>
+                    <input type="text" id="sellerPrice" name="price" required aria-describedby="priceError" placeholder="e.g., 2200 प्रति क्विंटल or 45 प्रति किलो">
+                    <div id="priceError" class="error" role="alert"></div>
+                </label>
+                
+                <label for="sellerLocation">
+                    <span data-key="formLocation">स्थान</span> <span style="color: red;">*</span>
+                    <input type="text" id="sellerLocation" name="location" required aria-describedby="locationError" placeholder="जिला, राज्य">
+                    <div id="locationError" class="error" role="alert"></div>
+                </label>
+                
+                <label for="sellerPhone">
+                    <span data-key="formPhone">मोबाइल नंबर</span> <span style="color: red;">*</span>
+                    <input type="tel" id="sellerPhone" name="phone" pattern="[0-9]{10}" required aria-describedby="phoneError" placeholder="10 अंकों का नंबर">
+                    <div id="phoneError" class="error" role="alert"></div>
+                </label>
+                
+                <button type="submit" class="btn btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+                    <span data-key="submitBtn">सबमिट करें</span>
+                </button>
+            </form>
+            
+            <div id="sellerSuccess" class="success-message" role="alert" data-key="sellerSuccessMsg">
+                ✅ आपका उत्पाद सफलतापूर्वक सबमिट हो गया!
+            </div>
+
+            <!-- Gemini Feature: Sales Pitch Generator -->
+            <div id="geminiSalesPitch" class="gemini-feature">
+                <h4 data-key="pitchTitle">✨ AI-Powered Sales Pitch</h4>
+                <p style="margin-bottom: 1rem; color: #666;" data-key="pitchDesc">अपने ग्राहकों को भेजने के लिए AI द्वारा बनाया गया यह संदेश उपयोग करें।</p>
+                <textarea id="salesPitchText" rows="5" readonly style="background: #f0f0f0; cursor: default;"></textarea>
+                <div style="display:flex; gap: 1rem; margin-top: 1rem;">
+                     <button id="generatePitchBtn" class="btn btn-primary">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 21l1.9-5.8 5.8-1.9-5.8-1.9L12 3z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
+                        <span data-key="generatePitchBtn">Generate Pitch</span>
+                    </button>
+                    <button class="btn btn-secondary" id="copyPitchBtn">
+                        <svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                        <span data-key="copyBtn">Copy</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Enhanced Feedback Modal -->
+    <div id="feedbackModal" class="modal" role="dialog" aria-labelledby="feedbackModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" aria-label="मोडल बंद करें" title="बंद करें">&times;</span>
+            <h2 id="feedbackModalTitle" data-key="feedbackTitle">💬 फीडबैक दें</h2>
+            <p style="margin-bottom: 2rem; color: #666;" data-key="feedbackDesc">आपका फीडबैक हमारे लिए बहुत महत्वपूर्ण है</p>
+            
+            <form id="feedbackForm" novalidate>
+                <label for="feedbackRating">
+                    <span data-key="formRating">रेटिंग दें</span> <span style="color: red;">*</span>
+                    <div style="display: flex; gap: 0.5rem; margin: 0.5rem 0;">
+                        <button type="button" class="star-btn" data-rating="1" aria-label="1 स्टार">⭐</button>
+                        <button type="button" class="star-btn" data-rating="2" aria-label="2 स्टार">⭐</button>
+                        <button type="button" class="star-btn" data-rating="3" aria-label="3 स्टार">⭐</button>
+                        <button type="button" class="star-btn" data-rating="4" aria-label="4 स्टार">⭐</button>
+                        <button type="button" class="star-btn" data-rating="5" aria-label="5 स्टार">⭐</button>
+                    </div>
+                    <input type="hidden" id="feedbackRating" name="rating" required>
+                    <div id="ratingError" class="error" role="alert"></div>
+                </label>
+                
+                <label for="feedbackText">
+                    <span data-key="formFeedback">आपका फीडबैक</span> <span style="color: red;">*</span>
+                    <textarea id="feedbackText" name="feedback" rows="4" required aria-describedby="feedbackError" placeholder="कृपया अपना अनुभव साझा करें..."></textarea>
+                    <div id="feedbackError" class="error" role="alert"></div>
+                </label>
+                
+                <button type="submit" class="btn btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                    <span data-key="submitBtn">सबमिट</span>
+                </button>
+            </form>
+            
+            <div id="feedbackSuccess" class="success-message" role="alert" data-key="feedbackSuccessMsg">
+                🙏 धन्यवाद! आपका फीडबैक सबमिट हो गया।
+            </div>
+        </div>
+    </div>
+    <!-- Enhanced Policy Modal -->
+    <div id="policyModal" class="modal" role="dialog" aria-labelledby="policyModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" aria-label="मोडल बंद करें" title="बंद करें">&times;</span>
+            <h2 id="policyModalTitle" data-key="policyTitle">🏛️ नवीनतम सरकारी नीतियां और योजनाएं</h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--dark-green); border-bottom: 2px solid var(--primary-green); padding-bottom: 0.5rem;" data-key="policy1Title">PM-KISAN योजना विस्तार 2025</h3>
+                <p data-key="policy1Detail1"><strong>लाभ:</strong> अब ₹8,000 प्रति वर्ष (पहले ₹6,000)</p>
+                <p data-key="policy1Detail2"><strong>पात्रता:</strong> सभी भूमिधारक किसान परिवार</p>
+                <p data-key="policy1Detail3"><strong>आवेदन:</strong> pmkisan.gov.in पर ऑनलाइन</p>
+                <p data-key="policy1Detail4"><strong>नवीन सुविधा:</strong> मोबाइल OTP से तुरंत वेरिफिकेशन</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--dark-green); border-bottom: 2px solid var(--primary-green); padding-bottom: 0.5rem;" data-key="policy2Title">प्रधानमंत्री फसल बीमा योजना अपडेट</h3>
+                <p data-key="policy2Detail1"><strong>प्रीमियम कम:</strong> खरीफ 2%, रबी 1.5%</p>
+                <p data-key="policy2Detail2"><strong>नई तकनीक:</strong> ड्रोन और सैटेलाइट से नुकसान आकलन</p>
+                <p data-key="policy2Detail3"><strong>त्वरित भुगतान:</strong> 15 दिन में क्लेम सेटलमेंट</p>
+                <p data-key="policy2Detail4"><strong>कवरेज:</strong> सभी प्राकृतिक आपदाएं शामिल</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--dark-green); border-bottom: 2px solid var(--primary-green); padding-bottom: 0.5rem;" data-key="policy3Title">किसान क्रेडिट कार्ड (KCC) नई सुविधाएं</h3>
+                <p data-key="policy3Detail1"><strong>बढ़ी हुई लिमिट:</strong> ₹3 लाख तक बिना गारंटी</p>
+                <p data-key="policy3Detail2"><strong>कम ब्याज दर:</strong> 4% वार्षिक (सब्सिडी के बाद)</p>
+                <p data-key="policy3Detail3"><strong>डिजिटल KCC:</strong> ऑनलाइन आवेदन, तुरंत अप्रूवल</p>
+                <p data-key="policy3Detail4"><strong>मल्टी-यूज:</strong> खेती, पशुपालन, मत्स्य पालन के लिए</p>
+            </div>
+            
+            <div style="background: #e8f5e8; padding: 1rem; border-radius: var(--border-radius);">
+                <h4 style="color: var(--dark-green);" data-key="howToApply">📱 आवेदन कैसे करें?</h4>
+                <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                    <li data-key="applyStep1">Kisan-Sarthi AI ऐप पर 'सरकारी योजना' सेक्शन पर जाएं</li>
+                    <li data-key="applyStep2">अपनी पात्रता चेक करें</li>
+                    <li data-key="applyStep3">आवश्यक डॉक्यूमेंट अपलोड करें</li>
+                    <li data-key="applyStep4">एक क्लिक में आवेदन सबमिट करें</li>
+                </ul>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="btn btn-primary" id="downloadAppBtn">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+                    <span data-key="downloadAppBtn">Kisan-Sarthi AI ऐप डाउनलोड करें</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-kisandb}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks: [kisan_net]
+
+  chat-service:
+    build: ./backend/services/chat-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-kisandb}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8000:80"]
+    networks: [kisan_net]
+
+  market-service:
+    build: ./backend/services/market-services
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-kisandb}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8001:80"]
+    networks: [kisan_net]
+
+  user-service:
+    build: ./backend/services/user-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-kisandb}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8002:80"]
+    networks: [kisan_net]
+
+  weather-service:
+    build: ./backend/services/weather-service
+    ports: ["8003:80"]
+    networks: [kisan_net]
+
+networks:
+  kisan_net:
+    driver: bridge
+
+volumes:
+  postgres_data:
