@@ -14,20 +14,14 @@ models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(title="Kisan-Sarthi Chat Service")
 
-# --- Add the CORS Middleware ---
-origins = [
-    "http://localhost",
-    "http://localhost:8000",
-    "null", # Allow requests from file:// protocol (local HTML files)
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["https://kisaansarthi-ai.vercel.app"],  # frontend domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # ... (the rest of your API code)
 # Dependency to get a database session

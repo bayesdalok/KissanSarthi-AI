@@ -10,21 +10,14 @@ models.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI(title="Kisan-Sarthi Market Service")
 
-# --- ADD THIS MIDDLEWARE BLOCK ---
-origins = [
-    "http://localhost",
-    "http://localhost:8000",
-    "null", # Allows the browser to make requests from a local HTML file
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["https://kisaansarthi-ai.vercel.app"],  # frontend domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# ---------------------------------
+
 
 def get_db():
     db = database.SessionLocal()
