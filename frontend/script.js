@@ -519,9 +519,19 @@ document.addEventListener('DOMContentLoaded', function() {
         day: 'numeric'
     });
     
-    // --- BACKEND API INTEGRATION ---
-    const CHAT_API_URL = "http://localhost:8002/chat";
-    const MARKET_API_URL = "http://localhost:8001/market-prices/Vadodara";
+    const BASE_URLS = {
+        chat: "https://chat-service-l3dm.onrender.com",
+        market: "https://market-services.onrender.com",
+        user: "https://user-service-znmf.onrender.com",
+        weather: "https://weather-service-e16o.onrender.com"
+      };
+      
+      // Example call:
+      async function getWeather(location) {
+        const res = await fetch(`${BASE_URLS.weather}/weather?location=${location}`);
+        return await res.json();
+      }
+      
 
     // --- CHATBOT ENHANCEMENT ---
     const sendMessage = async function() {
