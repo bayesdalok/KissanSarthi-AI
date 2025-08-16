@@ -519,19 +519,9 @@ document.addEventListener('DOMContentLoaded', function() {
         day: 'numeric'
     });
     
-    const BASE_URLS = {
-        chat: "https://chat-service-l3dm.onrender.com",
-        market: "https://market-services.onrender.com",
-        user: "https://user-service-znmf.onrender.com",
-        weather: "https://weather-service-e16o.onrender.com"
-      };
-      
-      // Example call:
-      async function getWeather(location) {
-        const res = await fetch(`${BASE_URLS.weather}/weather?location=${location}`);
-        return await res.json();
-      }
-      
+    // --- BACKEND API INTEGRATION ---
+    const CHAT_API_URL = "https://chat-service-l3dm.onrender.com";
+    const MARKET_API_URL = "https://market-services.onrender.com";
 
     // --- CHATBOT ENHANCEMENT ---
     const sendMessage = async function() {
