@@ -64,13 +64,13 @@ services:
     networks:
       - kisan_net
   
-    pest-detection-service:
-      build: ./services/pest-detection-service
-      ports:
-        - "8003:5000" # Expose container port 5000 to host port 8003
-      volumes:
-        - ./services/pest-detection-service:/usr/src/app # For live code changes
-      environment:
+  pest-detection-service:
+    build: ./services/pest-detection-service
+    ports:
+      - "8003:5000" # Expose container port 5000 to host port 8003
+    volumes:
+      - ./services/pest-detection-service:/usr/src/app # For live code changes
+    environment:
         - FLASK_ENV=development
 
 networks:
