@@ -520,8 +520,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // --- BACKEND API INTEGRATION ---
-    const CHAT_API_URL = "https://chat-service-l3dm.onrender.com";
-    const MARKET_API_URL = "https://market-services.onrender.com";
+    const CHAT_API_URL = "https://chat-service-l3dm.onrender.com/chat";
+    const MARKET_API_URL = "https://market-services.onrender.com/market-prices/";
 
     // --- CHATBOT ENHANCEMENT ---
     const sendMessage = async function() {
