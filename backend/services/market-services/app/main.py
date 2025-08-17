@@ -101,9 +101,14 @@ async def get_prices(request: Request, market_name: Optional[str] = None) -> Lis
         }
 
     # Filter by market name if provided
-    if market_name:
-        filt = [normalize(r) for r in records if r.get("market") and market_name.lower() in r["market"].lower()]
+    # Filter by market name if provided and not empty
+    if market_name and market_name.strip():
+        filt = [
+            normalize(r) for r in records
+            if r.get("market") and market_name.lower() in r["market"].lower()
+        ]
     else:
+        # If no valid market_name given, return all
         filt = [normalize(r) for r in records]
 
     return filt
