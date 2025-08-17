@@ -54,6 +54,16 @@ services:
     ports: ["8003:80"]
     networks: [kisan_net]
 
+  marketplace-service:
+    build: ./services/marketplace-service
+    container_name: kisan-sarthi-marketplace-service
+    ports:
+      - "8004:80" # Running on host port 8004
+    depends_on:
+      - postgres
+    networks:
+      - kisan_sarthi_network
+
 networks:
   kisan_net:
     driver: bridge
