@@ -348,6 +348,23 @@
             padding: 1rem;
             text-align: center;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .voice-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .voice-btn:hover {
+            opacity: 1;
         }
         
         .chat-messages {
@@ -412,7 +429,7 @@
             box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
         }
         
-        .send-btn {
+        .send-btn, .mic-btn {
             background: var(--primary-green);
             color: white;
             border: none;
@@ -423,9 +440,22 @@
         }
         
         .send-btn:hover,
-        .send-btn:focus {
+        .send-btn:focus,
+        .mic-btn:hover,
+        .mic-btn:focus {
             background: var(--dark-green);
             outline: none;
+        }
+
+        .mic-btn.is-listening {
+            background: #f44336;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(244, 67, 54, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0); }
         }
         
         /* Enhanced Floating Chatbot */
@@ -1500,7 +1530,7 @@
                     navSupport: "સહાય",
                     navPolicies: "નીતિઓ",
                     marqueeText: "📢 PM-KISAN યોજના વિસ્તરણ: હવે ₹8,000 પ્રતિ વર્ષ | પાક વીમામાં 50% સુધીની છૂટ | KCC મર્યાદા ₹3 લાખ સુધી વધી | ઓર્ગેનિક ખેતી માટે મફત પ્રમાણપત્ર",
-                    heroTitle: "� કિસાન-સારથી AI - તમારા ડિજિટલ કૃષિ સારથી",
+                    heroTitle: "🌾 કિસાન-સારથી AI - તમારા ડિજિટલ કૃષિ સારથી",
                     heroSubtitle: "AI ની શક્તિથી આધુનિક ખેતી કરો. હવામાનની માહિતીથી લઈને બજારના ભાવ સુધી, બધું એક જ જગ્યાએ.",
                     heroBtnStart: "હમણાં શરૂ કરો",
                     heroBtnLearn: "વધુ જાણો",
@@ -2198,4 +2228,3 @@
     </script>
 </body>
 </html>
-�
