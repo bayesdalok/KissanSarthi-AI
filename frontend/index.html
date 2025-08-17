@@ -450,7 +450,7 @@
             border-top: 1px solid #e0e0e0;
         }
         
-        .chat-input input {
+        .chat-input input[type="text"] {
             flex: 1;
             padding: 0.8rem;
             border: 1px solid #e0e0e0;
@@ -459,12 +459,12 @@
             transition: var(--transition);
         }
         
-        .chat-input input:focus {
+        .chat-input input[type="text"]:focus {
             border-color: var(--primary-green);
             box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
         }
         
-        .send-btn, .mic-btn {
+        .send-btn, .mic-btn, .upload-btn-label {
             background: var(--primary-green);
             color: white;
             border: none;
@@ -472,12 +472,17 @@
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .send-btn:hover,
         .send-btn:focus,
         .mic-btn:hover,
-        .mic-btn:focus {
+        .mic-btn:focus,
+        .upload-btn-label:hover,
+        .upload-btn-label:focus {
             background: var(--dark-green);
             outline: none;
         }
@@ -1097,11 +1102,17 @@
                     
                     <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="चैट संदेश">
                         <div class="message bot" data-key="chatbotWelcome">
-                            नमस्ते! मैं आपका Kisan-Sarthi AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।
+                            नमस्ते! मैं आपका Kisan-Sarthi AI हूँ। आप मुझसे मौसम, बाज़ार भाव, या सरकारी योजनाओं के बारे में पूछ सकते हैं। कीट-रोग की पहचान के लिए कृपया फसल का फोटो अपलोड करें।
                         </div>
                     </div>
                     
                     <div class="chat-input">
+                        <!-- === NEW: IMAGE UPLOAD BUTTON === -->
+                        <label for="imageUpload" class="upload-btn-label" title="Upload Image for Pest Detection">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                        </label>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        
                         <input type="text" 
                                id="messageInput" 
                                placeholder="यहां अपना सवाल लिखें..." 
@@ -1292,14 +1303,14 @@
                 <p style="margin-bottom: 1rem; color: #666;" data-key="pitchDesc">अपने ग्राहकों को भेजने के लिए AI द्वारा बनाया गया यह संदेश उपयोग करें।</p>
                 <textarea id="salesPitchText" rows="5" readonly style="background: #f0f0f0; cursor: default;"></textarea>
                 <div style="display:flex; gap: 1rem; margin-top: 1rem;">
-                       <button id="generatePitchBtn" class="btn btn-primary">
-                           <svg class="icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 21l1.9-5.8 5.8-1.9-5.8-1.9L12 3z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
-                           <span data-key="generatePitchBtn">Generate Pitch</span>
-                       </button>
-                       <button class="btn btn-secondary" id="copyPitchBtn">
-                           <svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                           <span data-key="copyBtn">Copy</span>
-                       </button>
+                        <button id="generatePitchBtn" class="btn btn-primary">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 21l1.9-5.8 5.8-1.9-5.8-1.9L12 3z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
+                            <span data-key="generatePitchBtn">Generate Pitch</span>
+                        </button>
+                        <button class="btn btn-secondary" id="copyPitchBtn">
+                            <svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                            <span data-key="copyBtn">Copy</span>
+                        </button>
                 </div>
             </div>
         </div>
@@ -1465,7 +1476,7 @@
                     chatbotTitle: "🤖 AI Agriculture Advisor",
                     chatbotHeader: "Kisan-Sarthi AI Assistant",
                     chatbotOnline: "🟢 Online - Get instant replies",
-                    chatbotWelcome: "Hello! I am your Kisan-Sarthi AI. You can ask me anything about weather, market prices, crop diseases, or government schemes.",
+                    chatbotWelcome: "Hello! I am your Kisan-Sarthi AI. You can ask me about weather, market prices, or government schemes. For pest identification, please upload a photo of the crop.",
                     chatbotPlaceholder: "Write your question here...",
                     suggestedQuestions: "Suggested Questions:",
                     qWeatherText: "Weather",
@@ -1711,7 +1722,7 @@
                     service3Desc: "તમારા પાકનો ફોટો અપલોડ કરીને તરત જ જીવાતો અને રોગોને ઓળખો અને સારવાર માટે સૂચનો મેળવો.",
                     service4Title: "બજારની માહિતી",
                     service4Desc: "રીઅલ-ટાઇમ બજાર ભાવ, માંગ-પુરવઠાની સ્થિતિ અને વેચાણ માટેનો યોગ્ય સમય.",
-                    mandiTitle: "� આજના બજાર ભાવ",
+                    mandiTitle: " આજના બજાર ભાવ",
                     mandiLocation: "વડોદરા બજાર",
                     sellProductBtn: "તમારું ઉત્પાદન વેચો",
                     quintal: "ક્વિન્ટલ",
@@ -1986,6 +1997,7 @@
             
             // --- BACKEND API INTEGRATION ---
             const CHAT_API_URL = "http://localhost:8002/chat";
+            const PEST_API_URL = "http://localhost:8003/detect-pest"; // <-- NEW API ENDPOINT
             const MARKET_API_URL = "http://localhost:8001/market-prices/Vadodara";
 
             // --- VOICE I/O STATE & SETUP ---
@@ -2094,6 +2106,82 @@
                     typeResponse(botMessage, "माफ़ कीजिए, AI से संपर्क करने में कोई समस्या हुई। कृपया बाद में प्रयास करें।");
                 }
             };
+
+            // === NEW: IMAGE UPLOAD HANDLING ===
+            const imageUploadInput = document.getElementById('imageUpload');
+
+            imageUploadInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    handleImageUpload(file);
+                }
+                event.target.value = null; 
+            });
+
+            async function handleImageUpload(file) {
+                const messagesContainer = document.getElementById('chatMessages');
+
+                // 1. Display image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'message user';
+                    userMessage.innerHTML = `
+                        <p>इस छवि की जाँच की जा रही है...</p>
+                        <img src="${e.target.result}" alt="Uploaded crop image" style="max-width: 100%; border-radius: 10px; margin-top: 8px;">
+                    `;
+                    messagesContainer.appendChild(userMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                };
+                reader.readAsDataURL(file);
+
+                // 2. Show bot thinking indicator
+                const botMessage = document.createElement('div');
+                botMessage.className = 'message bot';
+                botMessage.innerHTML = '<span class="typing">AI छवि का विश्लेषण कर रहा है...</span>';
+                messagesContainer.appendChild(botMessage);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // 3. Send image to backend
+                const formData = new FormData();
+                formData.append('image', file);
+
+                try {
+                    const response = await fetch(PEST_API_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const result = await response.json();
+                    displayDetectionResult(botMessage, result);
+
+                } catch (error) {
+                    console.error("Error detecting pest:", error);
+                    botMessage.textContent = "माफ़ कीजिए, मैं छवि का विश्लेषण नहीं कर सका। कृपया पुनः प्रयास करें।";
+                }
+            }
+
+            function displayDetectionResult(element, result) {
+                let confidencePercent = (result.confidence * 100).toFixed(0);
+                
+                element.innerHTML = `
+                    <strong>विश्लेषण पूरा हुआ:</strong>
+                    <p><strong>कीट/रोग:</strong> ${result.pest_name}</p>
+                    <p><strong>आत्मविश्वास:</strong> ${confidencePercent}%</p>
+                    <hr style="margin: 8px 0; border-color: #eee;">
+                    <p><strong>सुझाया गया उपाय:</strong></p>
+                    <p>${result.solution}</p>
+                `;
+                
+                const speechText = `विश्लेषण पूरा हुआ। मुझे ${confidencePercent} प्रतिशत यकीन है कि यह ${result.pest_name} है। सुझाया गया उपाय है: ${result.solution}`;
+                speakText(speechText);
+            }
+            // === END OF NEW CODE ===
+
 
             // --- MARKET PRICE FETCHER ---
             async function fetchMarketPrices() {
@@ -2503,4 +2591,3 @@
     </script>
 </body>
 </html>
-�
