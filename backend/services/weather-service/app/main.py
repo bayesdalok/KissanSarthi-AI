@@ -8,9 +8,16 @@ import datetime
 app = FastAPI(title="Kisan-Sarthi Weather Service")
 
 # --- ADD THIS MIDDLEWARE BLOCK ---
+# Allow multiple origins during development
+origins = [
+    "https://kisaansarthi-ai.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://kisaansarthi-ai.vercel.app"],  # frontend domain
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

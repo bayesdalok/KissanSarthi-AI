@@ -521,7 +521,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- BACKEND API INTEGRATION ---
     const CHAT_API_URL = "https://chat-service-l3dm.onrender.com/chat";
-    const MARKET_API_URL = "https://market-services.onrender.com/market-prices/Vadodara";
 
     // --- CHATBOT ENHANCEMENT ---
     const sendMessage = async function() {
@@ -564,34 +563,92 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // --- MARKET PRICE FETCHER ---
-    async function fetchMarketPrices() {
+    async function fetchMarketPrices(marketName = "") {
         const container = document.getElementById('produce-grid-container');
+        const lang = localStorage.getItem('language') || 'hi';
+        container.innerHTML = translations[lang]?.loadingText || "Loading...";
+    
         try {
-            const response = await fetch(MARKET_API_URL);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const prices = await response.json();
+            const response = await fetch(`https://market-services.onrender.com/market-prices?market_name=${encodeURIComponent(marketName)}`);
+            if (!response.ok) throw new Error(translations[lang]?.fetchError || "Network error");
             
-            container.innerHTML = ''; // Clear existing content
-            prices.forEach(item => {
-                const card = document.createElement('article');
-                card.className = 'produce-card';
-                card.tabIndex = 0;
-                card.innerHTML = `
-                    <h3>🌾 ${item.commodity}</h3>
-                    <p class="price">₹${item.modal_price}/<span data-key="quintal">क्विंटल</span></p>
-                `;
-                container.appendChild(card);
-            });
+            const prices = await response.json();
+            if (!prices.length) {
+                container.innerHTML = `<p>${translations[lang]?.noData || "No data found"}</p>`;
+                return;
+            }
 
-        } catch (error) {
-            console.error("Could not fetch market prices:", error);
-            container.innerHTML = `<p>Could not load market prices. Please ensure the backend is running.</p>`;
+          prices.forEach(item => {
+            const card = document.createElement('article');
+            card.className = 'produce-card';
+            card.tabIndex = 0;
+            card.innerHTML = `
+              <h3>${item.commodity} ${item.variety ? `(${item.variety})` : ""}</h3>
+              <p><strong>Market:</strong> ${item.market}, ${item.state}</p>
+              <p><strong>Price:</strong> ₹${item.modal_price}/quintal</p>
+              <p><strong>Min:</strong> ₹${item.min_price} | <strong>Max:</strong> ₹${item.max_price}</p>
+            `;
+            container.appendChild(card);
+          });
+        } catch (err) {
+        console.error("Error:", err);
+        container.innerHTML = `<p>${translations[lang]?.fetchError || "Error loading data"}</p>`;
+        }
+    }
+      
+    document.getElementById('marketSearchBtn').addEventListener('click', () => {
+        const marketName = document.getElementById('marketSearchInput').value.trim();
+        fetchMarketPrices(marketName || "");
+    });    
+  
+    let allMarkets = [];
+
+    // Fetch all markets once on load
+    async function loadMarketsList() {
+        try {
+            const response = await fetch("https://market-services.onrender.com/market-prices");
+            const prices = await response.json();
+            allMarkets = Array.from(new Set(prices.map(item => item.market)));  // unique markets
+        } catch (err) {
+            console.error("Failed to load markets list:", err);
         }
     }
 
-    fetchMarketPrices(); // Fetch prices on page load
+    // Show suggestions while typing
+    document.getElementById('marketSearchInput').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const suggestionsBox = document.getElementById('suggestions');
+        suggestionsBox.innerHTML = '';
+
+        if (!query) {
+            suggestionsBox.style.display = 'none';
+            return;
+        }
+
+        const filtered = allMarkets.filter(m => m.toLowerCase().includes(query));
+        if (filtered.length === 0) {
+            suggestionsBox.style.display = 'none';
+            return;
+        }
+
+        filtered.slice(0, 10).forEach(market => {
+            const div = document.createElement('div');
+            div.textContent = market;
+            div.addEventListener('click', () => {
+                document.getElementById('marketSearchInput').value = market;
+                suggestionsBox.style.display = 'none';
+                fetchMarketPrices(market);
+            });
+            suggestionsBox.appendChild(div);
+        });
+
+        suggestionsBox.style.display = 'block';
+    });
+
+    // Load default prices on page load
+    loadMarketsList();
+    fetchMarketPrices();
+
 
     // --- SALES PITCH GENERATOR ---
     const generateSalesPitch = async function() {

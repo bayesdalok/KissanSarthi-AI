@@ -93,18 +93,34 @@
                     <p data-key="service4Desc">रियल-टाइम बाज़ार के भाव, मांग-आपूर्ति की स्थिति, और बेचने का सही समय।</p>
                 </article>
             </div>
-        </section>
+        </section>          
         <!-- Enhanced Mandi Section -->
         <section id="mandi" class="mandi" style="background: var(--bg-light);">
             <h2 class="section-title" data-key="mandiTitle">🏪 आज के बाज़ार भाव</h2>
             <div class="mandi-header">
-                <p style="margin-bottom: 1rem;"><span data-key="mandiLocation">वडोदरा मंडी</span> - <span id="currentDate"></span></p>
+                <p style="margin-bottom: 1rem;"><span id="mandiLocationText" data-key="mandiLocation">वडोदरा मंडी</span>
+                    - <span id="currentDate"></span></p>
                 <button class="btn btn-primary" id="openSellerModalBtn" aria-label="अपना उत्पाद बेचने के लिए फॉर्म भरें">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
                     <span data-key="sellProductBtn">अपना उत्पाद बेचें</span>
                 </button>
             </div>
-            
+            <div class="market-search">
+                <input 
+                    type="text" 
+                    id="marketSearchInput" 
+                    placeholder="Enter market name (e.g., Delhi, Vadodara)" 
+                    autocomplete="off"
+                >
+                <div id="suggestions" class="suggestions-box"></div>
+                <button id="marketSearchBtn" aria-label="Search market prices">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span data-key="searchBtn">Search</span>
+                </button>
+            </div>          
             <div class="produce-grid" id="produce-grid-container">
                 <!-- Market data will be dynamically inserted here -->
             </div>
