@@ -62,7 +62,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - kisan_sarthi_network
+      - kisan_net
 
 networks:
   kisan_net:
