@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kisan-Sarthi AI - भारतीय किसानों के लिए AI-powered कृषि सलाहकार">
-    <meta name="keywords" content="कृषि, farming, किसान, agriculture, India, Kisan, Sarthi">
-    <title>Kisan-Sarthi AI | AI-Powered Agricultural Advisor</title>
+    <meta name="description" content="Prajanya AI - भारतीय किसानों के लिए AI-powered कृषि सलाहकार">
+    <meta name="keywords" content="कृषि, farming, किसान, agriculture, India, Prajanya, AI">
+    <title>Prajanya AI | AI-Powered Agricultural Advisor</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap">
     <style>
         /* General Styling */
@@ -450,7 +450,7 @@
             border-top: 1px solid #e0e0e0;
         }
         
-        .chat-input input[type="text"] {
+        .chat-input input {
             flex: 1;
             padding: 0.8rem;
             border: 1px solid #e0e0e0;
@@ -459,12 +459,12 @@
             transition: var(--transition);
         }
         
-        .chat-input input[type="text"]:focus {
+        .chat-input input:focus {
             border-color: var(--primary-green);
             box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
         }
         
-        .send-btn, .mic-btn, .upload-btn-label {
+        .send-btn, .mic-btn {
             background: var(--primary-green);
             color: white;
             border: none;
@@ -472,17 +472,12 @@
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .send-btn:hover,
         .send-btn:focus,
         .mic-btn:hover,
-        .mic-btn:focus,
-        .upload-btn-label:hover,
-        .upload-btn-label:focus {
+        .mic-btn:focus {
             background: var(--dark-green);
             outline: none;
         }
@@ -952,6 +947,22 @@
             margin-top: 0.5rem;
             font-size: 1rem;
         }
+
+        /* Pest Detection Modal Styles */
+        #image-preview {
+            margin-top: 1rem;
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        #diagnosis-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -960,9 +971,9 @@
     <!-- Enhanced Header -->
     <header class="header" role="banner">
         <nav class="nav-container" role="navigation" aria-label="मुख्य नेवीगेशन">
-            <a href="#" class="logo" aria-label="Kisan-Sarthi AI होम">
+            <a href="#" class="logo" aria-label="Prajanya AI होम">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13V7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v6a7 7 0 0 1-7 7z"></path><path d="M12 10V3"></path></svg>
-                Kisan-Sarthi AI
+                Prajanya AI
             </a>
             
             <ul class="nav-links">
@@ -997,8 +1008,8 @@
         <!-- Enhanced Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1 data-key="heroTitle">🌾 Kisan-Sarthi AI - आपका डिजिटल कृषि सारथी</h1>
-                <p data-key="heroSubtitle">AI की शक्ति से आधुनिक खेती करें। मौसम की जानकारी से लेकर बाज़ार के भाव तक, सब कुछ एक ही जगह।</p>
+                <h1 data-key="heroTitle">🌾 Prajanya AI</h1>
+                <p data-key="heroSubtitle">खेती का भविष्य, अब आपकी उंगलियों पर।</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="#chatbot" class="btn btn-primary" aria-label="अभी AI सहायक से बात करें">
                         <svg class="icon" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
@@ -1054,7 +1065,7 @@
                         <p data-key="service2Desc">AI-आधारित फसल चयन, बुआई का समय, और उत्पादकता बढ़ाने के तरीके।</p>
                     </article>
                     
-                    <article class="service-card" tabindex="0">
+                    <article class="service-card" id="pestDetectionCard" tabindex="0" style="cursor: pointer;">
                         <div class="card-icon" aria-hidden="true">🐛</div>
                         <h3 data-key="service3Title">कीट-रोग पहचान</h3>
                         <p data-key="service3Desc">फसल की फोटो अपलोड करके कीट-रोग की तुरंत पहचान और उपचार के सुझाव।</p>
@@ -1094,7 +1105,7 @@
                 <h2 class="section-title" data-key="chatbotTitle">🤖 AI कृषि सलाहकार</h2>
                 <div class="chatbot-demo">
                     <div class="chat-header">
-                        <span data-key="chatbotHeader">Kisan-Sarthi AI Assistant</span>
+                        <span data-key="chatbotHeader">Prajanya AI Assistant</span>
                         <button class="voice-btn" id="toggle-voice-btn" title="Toggle voice output">
                             <svg class="icon" viewBox="0 0 24 24"><path d="M11.5 3a1.5 1.5 0 0 0-1.5 1.5v0a1.5 1.5 0 0 0 1.5 1.5v0a1.5 1.5 0 0 0 1.5-1.5v0A1.5 1.5 0 0 0 11.5 3z"/><path d="M9 10a1 1 0 0 0-1 1v2a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4v-2a1 1 0 0 0-1-1z"/></svg>
                         </button>
@@ -1102,17 +1113,11 @@
                     
                     <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="चैट संदेश">
                         <div class="message bot" data-key="chatbotWelcome">
-                            नमस्ते! मैं आपका Kisan-Sarthi AI हूँ। आप मुझसे मौसम, बाज़ार भाव, या सरकारी योजनाओं के बारे में पूछ सकते हैं। कीट-रोग की पहचान के लिए कृपया फसल का फोटो अपलोड करें।
+                            नमस्ते! मैं आपका Prajanya AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।
                         </div>
                     </div>
                     
                     <div class="chat-input">
-                        <!-- === NEW: IMAGE UPLOAD BUTTON === -->
-                        <label for="imageUpload" class="upload-btn-label" title="Upload Image for Pest Detection">
-                            <svg class="icon" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
-                        </label>
-                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                        
                         <input type="text" 
                                id="messageInput" 
                                placeholder="यहां अपना सवाल लिखें..." 
@@ -1178,7 +1183,7 @@
                                 <p style="color: #666; font-size: 0.9rem;" data-key="farmer1Location">वडोदरा, गुजरात</p>
                             </div>
                         </div>
-                        <p data-key="farmer1Story">"Kisan-Sarthi AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।"</p>
+                        <p data-key="farmer1Story">"Prajanya AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।"</p>
                         <div style="color: var(--accent-orange); margin-top: 1rem;">⭐⭐⭐⭐⭐</div>
                     </article>
                     
@@ -1303,14 +1308,14 @@
                 <p style="margin-bottom: 1rem; color: #666;" data-key="pitchDesc">अपने ग्राहकों को भेजने के लिए AI द्वारा बनाया गया यह संदेश उपयोग करें।</p>
                 <textarea id="salesPitchText" rows="5" readonly style="background: #f0f0f0; cursor: default;"></textarea>
                 <div style="display:flex; gap: 1rem; margin-top: 1rem;">
-                        <button id="generatePitchBtn" class="btn btn-primary">
-                            <svg class="icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 21l1.9-5.8 5.8-1.9-5.8-1.9L12 3z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
-                            <span data-key="generatePitchBtn">Generate Pitch</span>
-                        </button>
-                        <button class="btn btn-secondary" id="copyPitchBtn">
-                            <svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                            <span data-key="copyBtn">Copy</span>
-                        </button>
+                       <button id="generatePitchBtn" class="btn btn-primary">
+                           <svg class="icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8-5.8 1.9 5.8 1.9L12 21l1.9-5.8 5.8-1.9-5.8-1.9L12 3z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
+                           <span data-key="generatePitchBtn">Generate Pitch</span>
+                       </button>
+                       <button class="btn btn-secondary" id="copyPitchBtn">
+                           <svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                           <span data-key="copyBtn">Copy</span>
+                       </button>
                 </div>
             </div>
         </div>
@@ -1417,6 +1422,22 @@
             </div>
         </div>
     </div>
+    <!-- Pest Detection Modal -->
+    <div id="pestDetectionModal" class="modal" role="dialog" aria-labelledby="pestModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" aria-label="मोडल बंद करें" title="बंद करें">&times;</span>
+            <h2 id="pestModalTitle" data-key="pestTitle">🐛 AI Pest & Disease Detection</h2>
+            <p style="margin-bottom: 1rem; color: #666;" data-key="pestDesc">Upload a photo of the affected crop to get a diagnosis.</p>
+            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            <button class="btn btn-primary" onclick="document.getElementById('image-upload').click();">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15"></line></svg>
+                Upload Photo
+            </button>
+            <img id="image-preview" src="#" alt="Image Preview">
+            <button id="diagnose-btn" class="btn btn-primary" style="margin-top: 1rem; display: none;">Diagnose</button>
+            <div id="diagnosis-result"></div>
+        </div>
+    </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1440,8 +1461,8 @@
                     navSupport: "Support",
                     navPolicies: "Policies",
                     marqueeText: "📢 PM-KISAN Scheme Extended: Now ₹8,000 per year | Up to 50% discount on crop insurance | KCC limit increased to ₹3 lakh | Free certification for organic farming",
-                    heroTitle: "🌾 Kisan-Sarthi AI - Your Digital Agri-Companion",
-                    heroSubtitle: "Modernize your farming with the power of AI. From weather updates to market prices, get everything in one place.",
+                    heroTitle: "🌾 Prajanya AI",
+                    heroSubtitle: "The future of farming, now at your fingertips.",
                     heroBtnStart: "Get Started",
                     heroBtnLearn: "Learn More",
                     dashboardTitle: "📅 Today's Dashboard",
@@ -1474,9 +1495,9 @@
                     potato: "🥔 Potato",
                     chilli: "🌶️ Green Chilli",
                     chatbotTitle: "🤖 AI Agriculture Advisor",
-                    chatbotHeader: "Kisan-Sarthi AI Assistant",
+                    chatbotHeader: "Prajanya AI Assistant",
                     chatbotOnline: "🟢 Online - Get instant replies",
-                    chatbotWelcome: "Hello! I am your Kisan-Sarthi AI. You can ask me about weather, market prices, or government schemes. For pest identification, please upload a photo of the crop.",
+                    chatbotWelcome: "Hello! I am your Prajanya AI. You can ask me anything about weather, market prices, crop diseases, or government schemes.",
                     chatbotPlaceholder: "Write your question here...",
                     suggestedQuestions: "Suggested Questions:",
                     qWeatherText: "Weather",
@@ -1499,7 +1520,7 @@
                     storiesTitle: "🌟 Success Stories",
                     farmer1Name: "Rajesh Patel",
                     farmer1Location: "Vadodara, Gujarat",
-                    farmer1Story: "\"With Kisan-Sarthi AI's advice, my tomato crop yield improved by 40%. The AI assistant identified pests at the right time.\"",
+                    farmer1Story: "\"With Prajanya AI's advice, my tomato crop yield improved by 40%. The AI assistant identified pests at the right time.\"",
                     farmer2Name: "Sunita Sharma",
                     farmer2Location: "Anand, Gujarat",
                     farmer2Story: "\"I saved my crop from rain with accurate weather information. I also get market prices on time.\"",
@@ -1561,6 +1582,8 @@
                     video2Title: "Organic Farming",
                     video3Title: "Drip Irrigation",
                     video4Title: "Soil Health",
+                    pestTitle: "🐛 AI Pest & Disease Detection",
+                    pestDesc: "Upload a photo of the affected crop to get a diagnosis.",
                 },
                 hi: {
                     autofillBtn: "मेरी जानकारी भरें",
@@ -1572,8 +1595,8 @@
                     navSupport: "सहायता",
                     navPolicies: "नीतियां",
                     marqueeText: "📢 PM-KISAN योजना विस्तार: अब ₹8,000 प्रति वर्ष | फसल बीमा में 50% तक की छूट | KCC की लिमिट बढ़कर ₹3 लाख | ऑर्गेनिक खेती के लिए मुफ्त सर्टिफिकेशन",
-                    heroTitle: "🌾 Kisan-Sarthi AI - आपका डिजिटल कृषि सारथी",
-                    heroSubtitle: "AI की शक्ति से आधुनिक खेती करें। मौसम की जानकारी से लेकर बाज़ार के भाव तक, सब कुछ एक ही जगह।",
+                    heroTitle: "🌾 Prajanya AI",
+                    heroSubtitle: "खेती का भविष्य, अब आपकी उंगलियों पर।",
                     heroBtnStart: "अभी शुरू करें",
                     heroBtnLearn: "और जानें",
                     dashboardTitle: "📅 आज का डैशबोर्ड",
@@ -1606,9 +1629,9 @@
                     potato: "🥔 आलू",
                     chilli: "🌶️ हरी मिर्च",
                     chatbotTitle: "🤖 AI कृषि सलाहकार",
-                    chatbotHeader: "Kisan-Sarthi AI Assistant",
+                    chatbotHeader: "Prajanya AI Assistant",
                     chatbotOnline: "🟢 ऑनलाइन - तुरंत जवाब पाएं",
-                    chatbotWelcome: "नमस्ते! मैं आपका Kisan-Sarthi AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।",
+                    chatbotWelcome: "नमस्ते! मैं आपका Prajanya AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।",
                     chatbotPlaceholder: "यहां अपना सवाल लिखें...",
                     suggestedQuestions: "सुझावित प्रश्न:",
                     qWeatherText: "मौसम",
@@ -1631,7 +1654,7 @@
                     storiesTitle: "🌟 सफलता की कहानियां",
                     farmer1Name: "राजेश पटेल",
                     farmer1Location: "वडोदरा, गुजरात",
-                    farmer1Story: "\"Kisan-Sarthi AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।\"",
+                    farmer1Story: "\"Prajanya AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।\"",
                     farmer2Name: "सुनीता शर्मा",
                     farmer2Location: "आणंद, गुजरात",
                     farmer2Story: "\"मौसम की सही जानकारी से मैंने बारिश से पहले अपनी फसल बचा ली। बाज़ार के भाव भी सही समय पर मिल जाते हैं।\"",
@@ -1693,6 +1716,8 @@
                     video2Title: "जैविक खेती",
                     video3Title: "टपक सिंचाई",
                     video4Title: "मृदा स्वास्थ्य",
+                    pestTitle: "🐛 AI कीट और रोग का पता लगाना",
+                    pestDesc: "निदान प्राप्त करने के लिए प्रभावित फसल का फोटो अपलोड करें।",
                 },
                 gu: {
                     autofillBtn: "મારી વિગતો ભરો",
@@ -1704,8 +1729,8 @@
                     navSupport: "સહાય",
                     navPolicies: "નીતિઓ",
                     marqueeText: "📢 PM-KISAN યોજના વિસ્તરણ: હવે ₹8,000 પ્રતિ વર્ષ | પાક વીમામાં 50% સુધીની છૂટ | KCC મર્યાદા ₹3 લાખ સુધી વધી | ઓર્ગેનિક ખેતી માટે મફત પ્રમાણપત્ર",
-                    heroTitle: "🌾 કિસાન-સારથી AI - તમારા ડિજિટલ કૃષિ સારથી",
-                    heroSubtitle: "AI ની શક્તિથી આધુનિક ખેતી કરો. હવામાનની માહિતીથી લઈને બજારના ભાવ સુધી, બધું એક જ જગ્યાએ.",
+                    heroTitle: "🌾 Prajanya AI",
+                    heroSubtitle: "ખેતીનું ભવિષ્ય, હવે તમારી આંગળીઓ પર।",
                     heroBtnStart: "હમણાં શરૂ કરો",
                     heroBtnLearn: "વધુ જાણો",
                     dashboardTitle: "📅 આજનું ડેશબોર્ડ",
@@ -1722,7 +1747,7 @@
                     service3Desc: "તમારા પાકનો ફોટો અપલોડ કરીને તરત જ જીવાતો અને રોગોને ઓળખો અને સારવાર માટે સૂચનો મેળવો.",
                     service4Title: "બજારની માહિતી",
                     service4Desc: "રીઅલ-ટાઇમ બજાર ભાવ, માંગ-પુરવઠાની સ્થિતિ અને વેચાણ માટેનો યોગ્ય સમય.",
-                    mandiTitle: " આજના બજાર ભાવ",
+                    mandiTitle: "🏪 આજના બજાર ભાવ",
                     mandiLocation: "વડોદરા બજાર",
                     sellProductBtn: "તમારું ઉત્પાદન વેચો",
                     quintal: "ક્વિન્ટલ",
@@ -1733,14 +1758,14 @@
                     stable: "સ્થિર",
                     wheat: "🌾 ઘઉં",
                     paddy: "🌾 ડાંગર",
-                    onion: "🧅 ડુંગળી",
+                    onion: "� ડુંગળી",
                     tomato: "🍅 ટામેટા",
                     potato: "🥔 બટાકા",
                     chilli: "🌶️ લીલા મરચા",
                     chatbotTitle: "🤖 AI કૃષિ સલાહકાર",
-                    chatbotHeader: "કિસાન-સારથી AI સહાયક",
+                    chatbotHeader: "Prajanya AI Assistant",
                     chatbotOnline: "🟢 ઓનલાઈન - તરત જવાબ મેળવો",
-                    chatbotWelcome: "નમસ્તે! હું તમારો કિસાન-સારથી AI છું. તમે મને હવામાન, બજાર ભાવ, પાકના રોગો અથવા સરકારી યોજનાઓ વિશે કંઈપણ પૂછી શકો છો.",
+                    chatbotWelcome: "નમસ્તે! હું તમારો Prajanya AI છું. તમે મને હવામાન, બજાર ભાવ, પાકના રોગો અથવા સરકારી યોજનાઓ વિશે કંઈપણ પૂછી શકો છો.",
                     chatbotPlaceholder: "તમારો પ્રશ્ન અહીં લખો...",
                     suggestedQuestions: "સૂચવેલા પ્રશ્નો:",
                     qWeatherText: "હવામાન",
@@ -1763,7 +1788,7 @@
                     storiesTitle: "🌟 સફળતાની વાર્તાઓ",
                     farmer1Name: "રાજેશ पटेल",
                     farmer1Location: "વડોદરા, ગુજરાત",
-                    farmer1Story: "\"કિસાન-સારથી AIની સલાહથી, મારા ટામેટાના પાકમાં 40% સુધારો થયો. AI સહાયકે યોગ્ય સમયે જીવાતોને ઓળખી કાઢ્યા.\"",
+                    farmer1Story: "\"Prajanya AIની સલાહથી, મારા ટામેટાના પાકમાં 40% સુધારો થયો. AI સહાયકે યોગ્ય સમયે જીવાતોને ઓળખી કાઢ્યા.\"",
                     farmer2Name: "સુનિતા શર્મા",
                     farmer2Location: "આણંદ, ગુજરાત",
                     farmer2Story: "\"સચોટ હવામાન માહિતીથી મેં વરસાદ પહેલાં મારો પાક બચાવી લીધો. મને બજાર ભાવ પણ સમયસર મળી જાય છે.\"",
@@ -1825,6 +1850,8 @@
                     video2Title: "જૈવિક ખેતી",
                     video3Title: "ટપક સિંચાઈ",
                     video4Title: "જમીન આરોગ્ય",
+                    pestTitle: "🐛 AI જીવાત અને રોગની શોધ",
+                    pestDesc: "નિદાન મેળવવા માટે અસરગ્રસ્ત પાકનો ફોટો અપલોડ કરો.",
                 },
                 mr: {
                     autofillBtn: "माझी माहिती भरा",
@@ -1836,8 +1863,8 @@
                     navSupport: "सहाय्य",
                     navPolicies: "धोरणे",
                     marqueeText: "📢 PM-KISAN योजना विस्तार: आता ₹8,000 प्रति वर्ष | पीक विम्यावर 50% पर्यंत सूट | KCC मर्यादा ₹3 लाखांपर्यंत वाढली | सेंद्रिय शेतीसाठी मोफत प्रमाणपत्र",
-                    heroTitle: "🌾 किसान-सारथी AI - तुमचा डिजिटल कृषी सारथी",
-                    heroSubtitle: "AI च्या शक्तीने आधुनिक शेती करा. हवामानाच्या माहितीपासून ते बाजाराच्या भावापर्यंत, सर्व काही एकाच ठिकाणी.",
+                    heroTitle: "🌾 Prajanya AI - तुमचा डिजिटल कृषी सारथी",
+                    heroSubtitle: "शेतीचे भविष्य, आता तुमच्या बोटांच्या टोकावर.",
                     heroBtnStart: "सुरुवात करा",
                     heroBtnLearn: "अधिक जाणून घ्या",
                     dashboardTitle: "📅 आजचा डॅशबोर्ड",
@@ -1870,9 +1897,9 @@
                     potato: "🥔 बटाटा",
                     chilli: "🌶️ हिरवी मिरची",
                     chatbotTitle: "🤖 AI कृषी सल्लागार",
-                    chatbotHeader: "किसान-सारथी AI सहाय्यक",
+                    chatbotHeader: "Prajanya AI Assistant",
                     chatbotOnline: "🟢 ऑनलाइन - त्वरित उत्तरे मिळवा",
-                    chatbotWelcome: "नमस्कार! मी तुमचा किसान-सारथी AI आहे. तुम्ही मला हवामान, बाजार भाव, पिकांचे रोग किंवा सरकारी योजनांबद्दल काहीही विचारू शकता.",
+                    chatbotWelcome: "नमस्कार! मी तुमचा Prajanya AI आहे. तुम्ही मला हवामान, बाजार भाव, पिकांचे रोग किंवा सरकारी योजनांबद्दल काहीही विचारू शकता.",
                     chatbotPlaceholder: "तुमचा प्रश्न येथे लिहा...",
                     suggestedQuestions: "सुचवलेले प्रश्न:",
                     qWeatherText: "हवामान",
@@ -1895,7 +1922,7 @@
                     storiesTitle: "🌟 यशोगाथा",
                     farmer1Name: "राजेश पटेल",
                     farmer1Location: "वडोदरा, गुजरात",
-                    farmer1Story: "\"किसान-सारथी AI च्या सल्ल्याने माझ्या टोमॅटोच्या पिकात 40% सुधारणा झाली. AI सहाय्यकाने योग्य वेळी कीड ओळखली.\"",
+                    farmer1Story: "\"Prajanya AI च्या सल्ल्याने माझ्या टोमॅटोच्या पिकात 40% सुधारणा झाली. AI सहाय्यकाने योग्य वेळी कीड ओळखली.\"",
                     farmer2Name: "सुनीતા शर्मा",
                     farmer2Location: "आनंद, गुजरात",
                     farmer2Story: "\"अचूक हवामान माहितीमुळे मी पावसापूर्वी माझे पीक वाचवले. मला बाजाराचे भावही वेळेवर मिळतात.\"",
@@ -1957,6 +1984,8 @@
                     video2Title: "सेंद्रिय शेती",
                     video3Title: "ठिबक सिंचन",
                     video4Title: "मृदा आरोग्य",
+                    pestTitle: "🐛 AI कीड आणि रोग ओळख",
+                    pestDesc: "निदान मिळविण्यासाठी प्रभावित पिकाचा फोटो अपलोड करा.",
                 }
             };
             
@@ -1997,8 +2026,7 @@
             
             // --- BACKEND API INTEGRATION ---
             const CHAT_API_URL = "http://localhost:8002/chat";
-            const PEST_API_URL = "http://localhost:8003/detect-pest"; // <-- NEW API ENDPOINT
-            const MARKET_API_URL = "http://localhost:8001/market-prices/Vadodara";
+            const PEST_API_URL = "http://localhost:5000/predict";
 
             // --- VOICE I/O STATE & SETUP ---
             let isVoiceOutputEnabled = false;
@@ -2103,112 +2131,33 @@
                     typeResponse(botMessage, data.response);
                 } catch (error) {
                     console.error("Error calling Chat Service:", error);
-                    typeResponse(botMessage, "माफ़ कीजिए, AI से संपर्क करने में कोई समस्या हुई। कृपया बाद में प्रयास करें।");
+                    typeResponse(botMessage, "Connection to the AI service failed. This might be due to an ad blocker or because the local backend server is not running. Please check your browser extensions and ensure the server is active.");
                 }
             };
 
-            // === NEW: IMAGE UPLOAD HANDLING ===
-            const imageUploadInput = document.getElementById('imageUpload');
-
-            imageUploadInput.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    handleImageUpload(file);
-                }
-                event.target.value = null; 
-            });
-
-            async function handleImageUpload(file) {
-                const messagesContainer = document.getElementById('chatMessages');
-
-                // 1. Display image preview
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const userMessage = document.createElement('div');
-                    userMessage.className = 'message user';
-                    userMessage.innerHTML = `
-                        <p>इस छवि की जाँच की जा रही है...</p>
-                        <img src="${e.target.result}" alt="Uploaded crop image" style="max-width: 100%; border-radius: 10px; margin-top: 8px;">
-                    `;
-                    messagesContainer.appendChild(userMessage);
-                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                };
-                reader.readAsDataURL(file);
-
-                // 2. Show bot thinking indicator
-                const botMessage = document.createElement('div');
-                botMessage.className = 'message bot';
-                botMessage.innerHTML = '<span class="typing">AI छवि का विश्लेषण कर रहा है...</span>';
-                messagesContainer.appendChild(botMessage);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-                // 3. Send image to backend
-                const formData = new FormData();
-                formData.append('image', file);
-
-                try {
-                    const response = await fetch(PEST_API_URL, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    
-                    const result = await response.json();
-                    displayDetectionResult(botMessage, result);
-
-                } catch (error) {
-                    console.error("Error detecting pest:", error);
-                    botMessage.textContent = "माफ़ कीजिए, मैं छवि का विश्लेषण नहीं कर सका। कृपया पुनः प्रयास करें।";
-                }
-            }
-
-            function displayDetectionResult(element, result) {
-                let confidencePercent = (result.confidence * 100).toFixed(0);
-                
-                element.innerHTML = `
-                    <strong>विश्लेषण पूरा हुआ:</strong>
-                    <p><strong>कीट/रोग:</strong> ${result.pest_name}</p>
-                    <p><strong>आत्मविश्वास:</strong> ${confidencePercent}%</p>
-                    <hr style="margin: 8px 0; border-color: #eee;">
-                    <p><strong>सुझाया गया उपाय:</strong></p>
-                    <p>${result.solution}</p>
-                `;
-                
-                const speechText = `विश्लेषण पूरा हुआ। मुझे ${confidencePercent} प्रतिशत यकीन है कि यह ${result.pest_name} है। सुझाया गया उपाय है: ${result.solution}`;
-                speakText(speechText);
-            }
-            // === END OF NEW CODE ===
-
-
-            // --- MARKET PRICE FETCHER ---
-            async function fetchMarketPrices() {
+            // --- MARKET PRICE FETCHER (Original Static Version) ---
+            function fetchMarketPrices() {
                 const container = document.getElementById('produce-grid-container');
-                try {
-                    const response = await fetch(MARKET_API_URL);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    const prices = await response.json();
-                    
-                    container.innerHTML = ''; // Clear existing content
-                    prices.forEach(item => {
-                        const card = document.createElement('article');
-                        card.className = 'produce-card';
-                        card.tabIndex = 0;
-                        card.innerHTML = `
-                            <h3>🌾 ${item.commodity}</h3>
-                            <p class="price">₹${item.modal_price}/<span data-key="quintal">क्विंटल</span></p>
-                        `;
-                        container.appendChild(card);
-                    });
-
-                } catch (error) {
-                    console.error("Could not fetch market prices:", error);
-                    container.innerHTML = `<p>Could not load market prices. Please ensure the backend is running.</p>`;
-                }
+                const prices = [
+                    { commodity: "Wheat", modal_price: 2200 },
+                    { commodity: "Paddy", modal_price: 1800 },
+                    { commodity: "Onion", modal_price: 1500 },
+                    { commodity: "Tomato", modal_price: 1200 },
+                    { commodity: "Potato", modal_price: 1000 },
+                    { commodity: "Green Chilli", modal_price: 3000 },
+                ];
+                
+                container.innerHTML = ''; // Clear existing content
+                prices.forEach(item => {
+                    const card = document.createElement('article');
+                    card.className = 'produce-card';
+                    card.tabIndex = 0;
+                    card.innerHTML = `
+                        <h3>🌾 ${item.commodity}</h3>
+                        <p class="price">₹${item.modal_price}/<span data-key="quintal">क्विंटल</span></p>
+                    `;
+                    container.appendChild(card);
+                });
             }
 
             fetchMarketPrices(); // Fetch prices on page load
@@ -2591,3 +2540,4 @@
     </script>
 </body>
 </html>
+�
