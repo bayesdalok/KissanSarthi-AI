@@ -1,94 +1,143 @@
-# Prajanya AI (KissanSarthi-AI) 🌾
+# 🌾 Prajanya-AI
 
-Prajanya AI is a comprehensive, AI-powered web application designed to serve as a digital advisor for Indian farmers. It provides crucial, real-time information and intelligent tools to support decision-making, enhance productivity, and improve livelihoods.
-
-**Live Demo:** [kisaansarthi-ai.vercel.app](https://kisaansarthi-ai.vercel.app/)
+**Prajanya-AI** is a multilingual AI-powered agriculture platform designed to support farmers with real-time market insights, intelligent chatbot assistance, and easy access to agricultural information. It bridges the gap between technology and farming by providing services in **English, Hindi, Gujarati, and Marathi**.
 
 ---
 
-## ✨ Key Features
+## 🚀 Features
 
-* **🤖 AI Agricultural Advisor:** An interactive chatbot that answers questions on weather, market prices, crop diseases, and government schemes.
-* **🗣️ Voice & Image Input:** Interact with the chatbot using voice commands or by uploading images for pest and disease identification.
-* **🌦️ Weather Forecast:** Get detailed 15-day weather predictions to plan farming activities effectively.
-* **🌱 Crop Advisory:** AI-driven recommendations for crop selection, sowing times, and techniques to boost yield.
-* **💰 Real-Time Market Prices:** Access up-to-date prices from local Mandis (markets) to determine the best time to sell produce.
-* **🏛️ Government Policy Hub:** Easy access to the latest information on government schemes, subsidies, and agricultural policies.
-* **🌐 Multi-language Support:** The interface is available in English, Hindi, Gujarati, and Marathi to cater to a diverse user base.
-* **🌙 Dark Mode:** A comfortable viewing experience in low-light conditions.
-
----
-
-## 🛠️ Technology Stack
-
-The project is built with a modern, full-stack architecture:
-
-* **Frontend:**
-    * HTML5
-    * CSS3 (with custom properties for theming)
-    * Vanilla JavaScript (for dynamic functionality and API interactions)
-* **Backend:**
-    * Python (likely using a web framework like Flask or FastAPI)
-    * AI/ML models for chatbot responses and image analysis.
+* 🤖 **AI Chatbot** (powered by Google Gemini API) for agricultural help and crop advisory
+* 🌐 **Multilingual Support** (English, Hindi, Gujarati, Marathi)
+* 📊 **Real-time Market Price Viewer** for local mandis
+* 📢 **Sales Pitch Generator** for farmers to promote their produce
+* 🗣 **Voice Support** (speech-to-text and text-to-speech via Web Speech API)
+* 💡 **Accessibility Features** (dark mode, voice input/output)
+* 📋 **Feedback & Seller Forms** for continuous improvement
+* ☁️ **Cloud Deployed** (Frontend on Vercel, Backend microservices on Render)
 
 ---
 
-## 🚀 Getting Started
+## 🏗 Tech Stack
 
-To get a local copy up and running, follow these simple steps.
+**Frontend**
 
-### Prerequisites
+* HTML, CSS, JavaScript
+* Vercel Deployment
+* Web Speech API for voice input/output
 
-* Python 3.8+
-* A web browser
+**Backend**
 
-### Installation
+* FastAPI (Python)
+* Microservices for chatbot & market data
+* PostgreSQL database (managed on Render)
+* SQLAlchemy ORM
 
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/bayesdalok/Prajanya-AI.git](https://github.com/bayesdalok/Prajanya-AI.git)
-    cd Prajanya-AI
-    ```
+**Integrations**
 
-2.  **Set up the Backend:**
-    ```sh
-    cd backend
-    # Create a virtual environment
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+* Google Gemini API (AI chatbot responses)
+* Twilio WhatsApp API *(future scope)*
+* Government APIs for mandi prices, weather, and subsidies
 
-    # Install required packages
-    pip install -r requirements.txt
+---
 
-    # Run the backend server
-    python app.py 
-    ```
-    The backend server will typically start on `http://localhost:8002` or `http://localhost:5000`.
+## ⚙️ System Architecture
 
-3.  **Set up the Frontend:**
-    * Navigate to the `frontend` directory.
-    * Open the `index.html` file directly in your web browser.
-    * **Note:** For full functionality (like API calls to the backend), you may need to run the frontend from a local web server to avoid CORS issues. You can use a simple Python server for this:
-        ```sh
-        # From within the 'frontend' directory
-        python -m http.server
-        ```
-        Then, access the site at `http://localhost:8000`.
+```
+Frontend (Vercel) <--> Backend Microservices (Render)
+         |                     |
+   [HTML/CSS/JS]          [FastAPI Services]
+   - Chat UI               - Chatbot Service (Gemini API)
+   - Market Prices          - Market Price Service
+   - Voice Support          - PostgreSQL (SQLAlchemy ORM)
+```
+
+External Integrations:
+
+* Google Gemini API (chat responses)
+* Twilio WhatsApp API *(planned)*
+* Govt. APIs for agriculture data *(planned)*
+
+---
+
+## 📂 Project Structure
+
+```
+prajanya-ai/
+│── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+│── backend/
+│   ├── chat-service/
+│   │   └── main.py
+│   ├── market-service/
+│   │   └── main.py
+│   ├── database/
+│   │   └── models.py
+│   └── requirements.txt
+│
+│── README.md
+```
+
+---
+
+## 🔧 Setup & Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/prajanya-ai.git
+cd prajanya-ai
+```
+
+### 2. Backend Setup
+
+```bash
+cd backend/chat-service
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8002
+```
+
+```bash
+cd ../market-service
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8001
+```
+
+Make sure to set environment variables:
+
+```bash
+export DATABASE_URL=your_postgres_url
+export GEMINI_API_KEY=your_gemini_api_key
+```
+
+### 3. Frontend Setup
+
+* Open `frontend/index.html` in your browser (or deploy on Vercel).
+
+---
+
+## 📌 Deployment
+
+* **Frontend:** Vercel (auto-deployed from GitHub)
+* **Backend:** Render (each microservice deployed separately)
+* **Database:** PostgreSQL on Render
+
+---
+
+## 🔮 Future Enhancements
+
+* 🌱 AI-powered pest and disease detection
+* ☁️ IoT integration for soil & weather data
+* 📈 Predictive analytics for crop yield forecasting
+* 🌍 Farmer-to-Farmer social network with AI moderation
+* 📲 WhatsApp chatbot support
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
