@@ -114,7 +114,7 @@
         
         .nav-links {
             display: flex;
-            gap: 0.5rem; /* Reduced gap */
+            gap: 1rem; 
             list-style: none;
         }
         
@@ -123,7 +123,7 @@
             font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
-            padding: 0.5rem 0.8rem; /* Reduced horizontal padding */
+            padding: 0.5rem 1rem;
             border-radius: var(--border-radius);
             white-space: nowrap; /* Prevent wrapping */
         }
@@ -167,14 +167,15 @@
             outline: none;
         }
         
-        /* Hero Section */
+        /* --- HERO SECTION UPDATE --- */
         .hero {
             padding: 10rem 2rem 6rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             color: white;
-            background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1974&auto=format&fit=crop');
+            /* Updated background image */
+            background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
         }
@@ -186,7 +187,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5); /* Dark overlay */
+            /* Slightly darker overlay for better text readability */
+            background: rgba(0,0,0,0.6); 
             z-index: 1;
         }
         
@@ -334,6 +336,13 @@
             margin: 0 auto;
         }
         
+        /* --- UI FIX: Service Card Links --- */
+        .service-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         /* Enhanced Cards */
         .service-card,
         .produce-card,
@@ -349,6 +358,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            height: 100%; /* Ensure cards in a row are same height */
         }
         
         .service-card:hover,
@@ -366,6 +376,23 @@
             color: var(--primary-green);
         }
         
+        /* --- UI FIX: Clickable Card Indicator --- */
+        #trainingCard::after {
+            content: '➔';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        #trainingCard:hover::after {
+            opacity: 1;
+            transform: translateX(-5px);
+        }
+
         /* Enhanced Chatbot Section */
         .chatbot-demo {
             background: white;
@@ -450,7 +477,7 @@
             border-top: 1px solid #e0e0e0;
         }
         
-        .chat-input input {
+        .chat-input input[type="text"] {
             flex: 1;
             padding: 0.8rem;
             border: 1px solid #e0e0e0;
@@ -459,12 +486,12 @@
             transition: var(--transition);
         }
         
-        .chat-input input:focus {
+        .chat-input input[type="text"]:focus {
             border-color: var(--primary-green);
             box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
         }
         
-        .send-btn, .mic-btn {
+        .send-btn, .mic-btn, .upload-btn {
             background: var(--primary-green);
             color: white;
             border: none;
@@ -472,12 +499,15 @@
             border-radius: var(--border-radius);
             cursor: pointer;
             transition: var(--transition);
+            flex-shrink: 0;
         }
         
         .send-btn:hover,
         .send-btn:focus,
         .mic-btn:hover,
-        .mic-btn:focus {
+        .mic-btn:focus,
+        .upload-btn:hover,
+        .upload-btn:focus {
             background: var(--dark-green);
             outline: none;
         }
@@ -751,6 +781,7 @@
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 0.5rem;
             }
             
             .hero {
@@ -1008,7 +1039,7 @@
         <!-- Enhanced Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1 data-key="heroTitle">🌾 Prajanya AI</h1>
+                <h1 data-key="heroTitle">Empowering Indian Farmers with AI</h1>
                 <p data-key="heroSubtitle">खेती का भविष्य, अब आपकी उंगलियों पर।</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="#chatbot" class="btn btn-primary" aria-label="अभी AI सहायक से बात करें">
@@ -1053,29 +1084,37 @@
             <section id="services" class="services">
                 <h2 class="section-title" data-key="servicesTitle">🛠️ हमारी सेवाएं</h2>
                 <div class="services-grid">
-                    <article class="service-card" tabindex="0">
-                        <div class="card-icon" aria-hidden="true">🌡️</div>
-                        <h3 data-key="service1Title">मौसम पूर्वानुमान</h3>
-                        <p data-key="service1Desc">15 दिन तक का सटीक मौसम पूर्वानुमान, वर्षा की संभावना, और खेती के लिए सुझाव।</p>
-                    </article>
+                    <a href="#weather" class="service-link">
+                        <article class="service-card" tabindex="0">
+                            <div class="card-icon" aria-hidden="true">🌡️</div>
+                            <h3 data-key="service1Title">मौसम पूर्वानुमान</h3>
+                            <p data-key="service1Desc">15 दिन तक का सटीक मौसम पूर्वानुमान, वर्षा की संभावना, और खेती के लिए सुझाव।</p>
+                        </article>
+                    </a>
                     
-                    <article class="service-card" tabindex="0">
-                        <div class="card-icon" aria-hidden="true">🌱</div>
-                        <h3 data-key="service2Title">फसल सलाह</h3>
-                        <p data-key="service2Desc">AI-आधारित फसल चयन, बुआई का समय, और उत्पादकता बढ़ाने के तरीके।</p>
-                    </article>
+                    <a href="#chatbot" class="service-link">
+                        <article class="service-card" tabindex="0">
+                            <div class="card-icon" aria-hidden="true">🌱</div>
+                            <h3 data-key="service2Title">फसल सलाह</h3>
+                            <p data-key="service2Desc">AI-आधारित फसल चयन, बुआई का समय, और उत्पादकता बढ़ाने के तरीके।</p>
+                        </article>
+                    </a>
                     
-                    <article class="service-card" id="pestDetectionCard" tabindex="0" style="cursor: pointer;">
-                        <div class="card-icon" aria-hidden="true">🐛</div>
-                        <h3 data-key="service3Title">कीट-रोग पहचान</h3>
-                        <p data-key="service3Desc">फसल की फोटो अपलोड करके कीट-रोग की तुरंत पहचान और उपचार के सुझाव।</p>
-                    </article>
+                    <a href="#chatbot" class="service-link">
+                        <article class="service-card" tabindex="0">
+                            <div class="card-icon" aria-hidden="true">🐛</div>
+                            <h3 data-key="service3Title">कीट-रोग पहचान</h3>
+                            <p data-key="service3Desc">फसल की फोटो अपलोड करके कीट-रोग की तुरंत पहचान और उपचार के सुझाव।</p>
+                        </article>
+                    </a>
                     
-                    <article class="service-card" tabindex="0">
-                        <div class="card-icon" aria-hidden="true">💰</div>
-                        <h3 data-key="service4Title">बाज़ार की जानकारी</h3>
-                        <p data-key="service4Desc">रियल-टाइम बाज़ार के भाव, मांग-आपूर्ति की स्थिति, और बेचने का सही समय।</p>
-                    </article>
+                    <a href="#mandi" class="service-link">
+                        <article class="service-card" tabindex="0">
+                            <div class="card-icon" aria-hidden="true">💰</div>
+                            <h3 data-key="service4Title">बाज़ार की जानकारी</h3>
+                            <p data-key="service4Desc">रियल-टाइम बाज़ार के भाव, मांग-आपूर्ति की स्थिति, और बेचने का सही समय।</p>
+                        </article>
+                    </a>
                 </div>
             </section>
             <!-- NEW Weather Section -->
@@ -1118,6 +1157,10 @@
                     </div>
                     
                     <div class="chat-input">
+                        <input type="file" id="chatImageUpload" accept="image/*" style="display: none;">
+                        <button class="upload-btn" id="uploadImageBtn" title="Upload Image for Pest Detection">
+                             <svg class="icon" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                        </button>
                         <input type="text" 
                                id="messageInput" 
                                placeholder="यहां अपना सवाल लिखें..." 
@@ -1461,7 +1504,7 @@
                     navSupport: "Support",
                     navPolicies: "Policies",
                     marqueeText: "📢 PM-KISAN Scheme Extended: Now ₹8,000 per year | Up to 50% discount on crop insurance | KCC limit increased to ₹3 lakh | Free certification for organic farming",
-                    heroTitle: "🌾 Prajanya AI",
+                    heroTitle: "Empowering Indian Farmers with AI",
                     heroSubtitle: "The future of farming, now at your fingertips.",
                     heroBtnStart: "Get Started",
                     heroBtnLearn: "Learn More",
@@ -1584,6 +1627,7 @@
                     video4Title: "Soil Health",
                     pestTitle: "🐛 AI Pest & Disease Detection",
                     pestDesc: "Upload a photo of the affected crop to get a diagnosis.",
+                    imageUploadText: "Image for pest detection:",
                 },
                 hi: {
                     autofillBtn: "मेरी जानकारी भरें",
@@ -1595,7 +1639,7 @@
                     navSupport: "सहायता",
                     navPolicies: "नीतियां",
                     marqueeText: "📢 PM-KISAN योजना विस्तार: अब ₹8,000 प्रति वर्ष | फसल बीमा में 50% तक की छूट | KCC की लिमिट बढ़कर ₹3 लाख | ऑर्गेनिक खेती के लिए मुफ्त सर्टिफिकेशन",
-                    heroTitle: "🌾 Prajanya AI",
+                    heroTitle: "AI के साथ भारतीय किसानों को सशक्त बनाना",
                     heroSubtitle: "खेती का भविष्य, अब आपकी उंगलियों पर।",
                     heroBtnStart: "अभी शुरू करें",
                     heroBtnLearn: "और जानें",
@@ -1718,6 +1762,7 @@
                     video4Title: "मृदा स्वास्थ्य",
                     pestTitle: "🐛 AI कीट और रोग का पता लगाना",
                     pestDesc: "निदान प्राप्त करने के लिए प्रभावित फसल का फोटो अपलोड करें।",
+                    imageUploadText: "कीट का पता लगाने के लिए छवि:",
                 },
                 gu: {
                     autofillBtn: "મારી વિગતો ભરો",
@@ -1729,7 +1774,7 @@
                     navSupport: "સહાય",
                     navPolicies: "નીતિઓ",
                     marqueeText: "📢 PM-KISAN યોજના વિસ્તરણ: હવે ₹8,000 પ્રતિ વર્ષ | પાક વીમામાં 50% સુધીની છૂટ | KCC મર્યાદા ₹3 લાખ સુધી વધી | ઓર્ગેનિક ખેતી માટે મફત પ્રમાણપત્ર",
-                    heroTitle: "🌾 Prajanya AI",
+                    heroTitle: "AI વડે ભારતીય ખેડૂતોને સશક્ત બનાવવા",
                     heroSubtitle: "ખેતીનું ભવિષ્ય, હવે તમારી આંગળીઓ પર।",
                     heroBtnStart: "હમણાં શરૂ કરો",
                     heroBtnLearn: "વધુ જાણો",
@@ -1822,7 +1867,7 @@
                     feedbackDesc: "તમારો પ્રતિસાદ અમારા માટે ખૂબ જ મહત્વપૂર્ણ છે",
                     formRating: "રેટિંગ આપો",
                     formFeedback: "તમારો પ્રતિસાદ",
-                    feedbackSuccessMsg: "🙏 આભાર! તમારો પ્રતિસાદ સબમિટ કરવામાં આવ્યો છે.",
+                    feedbackSuccessMsg: "� આભાર! તમારો પ્રતિસાદ સબમિટ કરવામાં આવ્યો છે.",
                     policyTitle: "🏛️ નવીનતમ સરકારી નીતિઓ અને યોજનાઓ",
                     policy1Title: "PM-KISAN યોજના વિસ્તરણ 2025",
                     policy1Detail1: "લાભ: હવે ₹8,000 પ્રતિ વર્ષ (પહેલાં ₹6,000)",
@@ -1852,6 +1897,7 @@
                     video4Title: "જમીન આરોગ્ય",
                     pestTitle: "🐛 AI જીવાત અને રોગની શોધ",
                     pestDesc: "નિદાન મેળવવા માટે અસરગ્રસ્ત પાકનો ફોટો અપલોડ કરો.",
+                    imageUploadText: "જીવાત શોધવા માટે છબી:",
                 },
                 mr: {
                     autofillBtn: "माझी माहिती भरा",
@@ -1863,7 +1909,7 @@
                     navSupport: "सहाय्य",
                     navPolicies: "धोरणे",
                     marqueeText: "📢 PM-KISAN योजना विस्तार: आता ₹8,000 प्रति वर्ष | पीक विम्यावर 50% पर्यंत सूट | KCC मर्यादा ₹3 लाखांपर्यंत वाढली | सेंद्रिय शेतीसाठी मोफत प्रमाणपत्र",
-                    heroTitle: "🌾 Prajanya AI - तुमचा डिजिटल कृषी सारथी",
+                    heroTitle: "AI सह भारतीय शेतकऱ्यांना सक्षम करणे",
                     heroSubtitle: "शेतीचे भविष्य, आता तुमच्या बोटांच्या टोकावर.",
                     heroBtnStart: "सुरुवात करा",
                     heroBtnLearn: "अधिक जाणून घ्या",
@@ -1986,6 +2032,7 @@
                     video4Title: "मृदा आरोग्य",
                     pestTitle: "🐛 AI कीड आणि रोग ओळख",
                     pestDesc: "निदान मिळविण्यासाठी प्रभावित पिकाचा फोटो अपलोड करा.",
+                    imageUploadText: "कीटक शोधण्यासाठी प्रतिमा:",
                 }
             };
             
@@ -2514,6 +2561,48 @@
                 });
             });
 
+            // --- CHATBOT IMAGE UPLOAD ---
+            const uploadImageBtn = document.getElementById('uploadImageBtn');
+            const chatImageUpload = document.getElementById('chatImageUpload');
+
+            uploadImageBtn.addEventListener('click', () => chatImageUpload.click());
+
+            chatImageUpload.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageUrl = e.target.result;
+                    const messagesContainer = document.getElementById('chatMessages');
+                    
+                    // Add user message with image preview
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'message user';
+                    userMessage.innerHTML = `
+                        <p data-key="imageUploadText">Image for pest detection:</p>
+                        <img src="${imageUrl}" alt="Uploaded crop image" style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+                    `;
+                    messagesContainer.appendChild(userMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    chatImageUpload.value = ''; // Reset file input
+
+                    // Show bot typing indicator
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message bot';
+                    botMessage.innerHTML = '<span class="typing">AI is analyzing the image...</span>';
+                    messagesContainer.appendChild(botMessage);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    
+                    // Mock backend call and response
+                    setTimeout(() => {
+                        const mockResponse = "Analysis complete. This looks like **Tomato Leaf Mold**. I recommend applying a copper-based fungicide. Avoid overhead watering to reduce humidity around the plants.";
+                        typeResponse(botMessage, mockResponse);
+                    }, 2500);
+                }
+                reader.readAsDataURL(file);
+            });
+
             // --- ATTACH ALL EVENT LISTENERS ---
             document.getElementById('policyLink').addEventListener('click', openPolicyModal);
             document.getElementById('openSellerModalBtn').addEventListener('click', openSellerModal);
@@ -2540,3 +2629,4 @@
     </script>
 </body>
 </html>
+�
