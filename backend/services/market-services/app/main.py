@@ -49,7 +49,7 @@ app.add_middleware(
         "http://127.0.0.1:3000",
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "https://kisaansarthi-ai.vercel.app",
+        "https://prajanya-ai.vercel.app",
         "https://market-services.onrender.com",
     ],
     allow_credentials=True,

@@ -16,7 +16,7 @@ app = FastAPI(title="Kisan-Sarthi Chat Service")
 
 # Allow multiple origins during development
 origins = [
-    "https://kisaansarthi-ai.vercel.app",
+    "https://prajanya-ai.vercel.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
