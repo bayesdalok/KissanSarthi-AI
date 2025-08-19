@@ -1,19 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-            
+    
+    // --- MOCK USER PROFILE ---
+    const userProfile = {
+        name: "राजेश पटेल",
+        location: "वडोदरा, गुजरात",
+        phone: "9876543210"
+    };
+
     // --- TRANSLATION DATA ---
     const translations = {
         en: {
+            autofillBtn: "Auto-fill with my details",
             skipLink: "Skip to main content",
+            navDashboard: "Dashboard",
             navServices: "Services",
             navMandi: "Market",
             navChatbot: "AI Assistant",
             navSupport: "Support",
             navPolicies: "Policies",
             marqueeText: "📢 PM-KISAN Scheme Extended: Now ₹8,000 per year | Up to 50% discount on crop insurance | KCC limit increased to ₹3 lakh | Free certification for organic farming",
-            heroTitle: "🌾 Kisan-Sarthi AI - Your Digital Agri-Companion",
-            heroSubtitle: "Modernize your farming with the power of AI. From weather updates to market prices, get everything in one place.",
+            heroTitle: "Empowering Indian Farmers with AI",
+            heroSubtitle: "The future of farming, now at your fingertips.",
             heroBtnStart: "Get Started",
             heroBtnLearn: "Learn More",
+            dashboardTitle: "📅 Today's Dashboard",
+            dashboardWeather: "Weather",
+            dashboardMarket: "Market Movers",
+            dashboardTip: "Tip of the Day",
+            dashboardChat: "Quick Chat",
             servicesTitle: "🛠️ Our Services",
             service1Title: "Weather Forecast",
             service1Desc: "Accurate 15-day weather forecast, rain probability, and farming advice.",
@@ -39,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
             potato: "🥔 Potato",
             chilli: "🌶️ Green Chilli",
             chatbotTitle: "🤖 AI Agriculture Advisor",
-            chatbotHeader: "Kisan-Sarthi AI Assistant",
+            chatbotHeader: "Prajanya AI Assistant",
             chatbotOnline: "🟢 Online - Get instant replies",
-            chatbotWelcome: "Hello! I am your Kisan-Sarthi AI. You can ask me anything about weather, market prices, crop diseases, or government schemes.",
+            chatbotWelcome: "Hello! I am your Prajanya AI. You can ask me anything about weather, market prices, crop diseases, or government schemes.",
             chatbotPlaceholder: "Write your question here...",
             suggestedQuestions: "Suggested Questions:",
             qWeatherText: "Weather",
@@ -56,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             support1Title: "Helpline",
             support1Desc: "Available 24x7",
             support2Title: "Expert Advice",
-            support2Desc: "Get advice from experienced agricultural experts via video call.",
+            support2Desc: "Kisan Call Centre: 1800-180-1551",
             bookAppointmentBtn: "Book Appointment",
             support3Title: "Training Programs",
             support3Desc: "Free online and offline training for new technologies.",
@@ -64,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             storiesTitle: "🌟 Success Stories",
             farmer1Name: "Rajesh Patel",
             farmer1Location: "Vadodara, Gujarat",
-            farmer1Story: "\"With Kisan-Sarthi AI's advice, my tomato crop yield improved by 40%. The AI assistant identified pests at the right time.\"",
+            farmer1Story: "\"With Prajanya AI's advice, my tomato crop yield improved by 40%. The AI assistant identified pests at the right time.\"",
             farmer2Name: "Sunita Sharma",
             farmer2Location: "Anand, Gujarat",
             farmer2Story: "\"I saved my crop from rain with accurate weather information. I also get market prices on time.\"",
@@ -115,25 +129,40 @@ document.addEventListener('DOMContentLoaded', function() {
             policy3Detail2: "Low Interest Rate: 4% per annum (after subsidy)",
             policy3Detail3: "Digital KCC: Online application, instant approval",
             policy3Detail4: "Multi-use: For farming, animal husbandry, and fisheries",
-            howToApply: "📱 How to Apply?",
-            applyStep1: "Go to the 'Government Schemes' section on the Kisan-Sarthi AI app",
-            applyStep2: "Check your eligibility",
-            applyStep3: "Upload the required documents",
-            applyStep4: "Submit the application with one click",
-            downloadAppBtn: "Download Kisan-Sarthi AI App",
+            govSitesTitle: "🔗 Official Government Resources",
+            govSitePMKisan: "PM-KISAN Samman Nidhi",
+            govSiteAgriWelfare: "Dept. of Agriculture & Farmers Welfare",
+            govSiteEnam: "e-NAM (National Agriculture Market)",
+            govSiteSoilHealth: "Soil Health Card",
+            linksTitle: "Important Links",
+            trainingTitle: "🎓 Training Videos",
+            video1Title: "Digital Farming",
+            video2Title: "Organic Farming",
+            video3Title: "Drip Irrigation",
+            video4Title: "Soil Health",
+            pestTitle: "🐛 AI Pest & Disease Detection",
+            pestDesc: "Upload a photo of the affected crop to get a diagnosis.",
+            imageUploadText: "Image for pest detection:",
         },
         hi: {
+            autofillBtn: "मेरी जानकारी भरें",
             skipLink: "मुख्य सामग्री पर जाएं",
+            navDashboard: "डैशबोर्ड",
             navServices: "सेवाएं",
             navMandi: "मंडी",
             navChatbot: "AI सहायक",
             navSupport: "सहायता",
             navPolicies: "नीतियां",
             marqueeText: "📢 PM-KISAN योजना विस्तार: अब ₹8,000 प्रति वर्ष | फसल बीमा में 50% तक की छूट | KCC की लिमिट बढ़कर ₹3 लाख | ऑर्गेनिक खेती के लिए मुफ्त सर्टिफिकेशन",
-            heroTitle: "🌾 Kisan-Sarthi AI - आपका डिजिटल कृषि सारथी",
-            heroSubtitle: "AI की शक्ति से आधुनिक खेती करें। मौसम की जानकारी से लेकर बाज़ार के भाव तक, सब कुछ एक ही जगह।",
+            heroTitle: "AI के साथ भारतीय किसानों को सशक्त बनाना",
+            heroSubtitle: "खेती का भविष्य, अब आपकी उंगलियों पर।",
             heroBtnStart: "अभी शुरू करें",
             heroBtnLearn: "और जानें",
+            dashboardTitle: "📅 आज का डैशबोर्ड",
+            dashboardWeather: "मौसम",
+            dashboardMarket: "बाजार मूवर्स",
+            dashboardTip: "आज का सुझाव",
+            dashboardChat: "त्वरित चैट",
             servicesTitle: "🛠️ हमारी सेवाएं",
             service1Title: "मौसम पूर्वानुमान",
             service1Desc: "15 दिन तक का सटीक मौसम पूर्वानुमान, वर्षा की संभावना, और खेती के लिए सुझाव।",
@@ -159,9 +188,9 @@ document.addEventListener('DOMContentLoaded', function() {
             potato: "🥔 आलू",
             chilli: "🌶️ हरी मिर्च",
             chatbotTitle: "🤖 AI कृषि सलाहकार",
-            chatbotHeader: "Kisan-Sarthi AI Assistant",
+            chatbotHeader: "Prajanya AI Assistant",
             chatbotOnline: "🟢 ऑनलाइन - तुरंत जवाब पाएं",
-            chatbotWelcome: "नमस्ते! मैं आपका Kisan-Sarthi AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।",
+            chatbotWelcome: "नमस्ते! मैं आपका Prajanya AI हूँ। आप मुझसे मौसम, बाज़ार भाव, फसल की बिमारियों, या सरकारी योजनाओं के बारे में कुछ भी पूछ सकते हैं।",
             chatbotPlaceholder: "यहां अपना सवाल लिखें...",
             suggestedQuestions: "सुझावित प्रश्न:",
             qWeatherText: "मौसम",
@@ -176,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             support1Title: "हेल्पलाइन",
             support1Desc: "24x7 उपलब्ध",
             support2Title: "विशेषज्ञ सलाह",
-            support2Desc: "अनुभवी कृषि विशेषज्ञों से वीडियो कॉल पर सलाह लें।",
+            support2Desc: "किसान कॉल सेंटर: 1800-180-1551",
             bookAppointmentBtn: "अपॉइंटमेंट बुक करें",
             support3Title: "प्रशिक्षण कार्यक्रम",
             support3Desc: "नई तकनीकों के लिए मुफ्त ऑनलाइन और ऑफलाइन प्रशिक्षण।",
@@ -184,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
             storiesTitle: "🌟 सफलता की कहानियां",
             farmer1Name: "राजेश पटेल",
             farmer1Location: "वडोदरा, गुजरात",
-            farmer1Story: "\"Kisan-Sarthi AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।\"",
+            farmer1Story: "\"Prajanya AI की सलाह से मेरी टमाटर की फसल 40% बेहतर हुई। AI सहायक ने सही समय पर कीड़ों की पहचान कराई।\"",
             farmer2Name: "सुनीता शर्मा",
             farmer2Location: "आणंद, गुजरात",
             farmer2Story: "\"मौसम की सही जानकारी से मैंने बारिश से पहले अपनी फसल बचा ली। बाज़ार के भाव भी सही समय पर मिल जाते हैं।\"",
@@ -235,25 +264,40 @@ document.addEventListener('DOMContentLoaded', function() {
             policy3Detail2: "कम ब्याज दर: 4% वार्षिक (सब्सिडी के बाद)",
             policy3Detail3: "डिजिटल KCC: ऑनलाइन आवेदन, तुरंत अप्रूवल",
             policy3Detail4: "मल्टी-यूज: खेती, पशुपालन, मत्स्य पालन के लिए",
-            howToApply: "📱 आवेदन कैसे करें?",
-            applyStep1: "Kisan-Sarthi AI ऐप पर 'सरकारी योजना' सेक्शन पर जाएं",
-            applyStep2: "अपनी पात्रता चेक करें",
-            applyStep3: "आवश्यक डॉक्यूमेंट अपलोड करें",
-            applyStep4: "एक क्लिक में आवेदन सबमिट करें",
-            downloadAppBtn: "Kisan-Sarthi AI ऐप डाउनलोड करें",
+            govSitesTitle: "🔗 आधिकारिक सरकारी संसाधन",
+            govSitePMKisan: "PM-KISAN सम्मान निधि",
+            govSiteAgriWelfare: "कृषि एवं किसान कल्याण विभाग",
+            govSiteEnam: "e-NAM (राष्ट्रीय कृषि बाजार)",
+            govSiteSoilHealth: "मृदा स्वास्थ्य कार्ड",
+            linksTitle: "महत्वपूर्ण लिंक",
+            trainingTitle: "🎓 प्रशिक्षण वीडियो",
+            video1Title: "डिजिटल खेती",
+            video2Title: "जैविक खेती",
+            video3Title: "टपक सिंचाई",
+            video4Title: "मृदा स्वास्थ्य",
+            pestTitle: "🐛 AI कीट और रोग का पता लगाना",
+            pestDesc: "निदान प्राप्त करने के लिए प्रभावित फसल का फोटो अपलोड करें।",
+            imageUploadText: "कीट का पता लगाने के लिए छवि:",
         },
         gu: {
+            autofillBtn: "મારી વિગતો ભરો",
             skipLink: "મુખ્ય સામગ્રી પર જાઓ",
+            navDashboard: "ડેશબોર્ડ",
             navServices: "સેવાઓ",
             navMandi: "બજાર",
             navChatbot: "AI સહાયક",
             navSupport: "સહાય",
             navPolicies: "નીતિઓ",
             marqueeText: "📢 PM-KISAN યોજના વિસ્તરણ: હવે ₹8,000 પ્રતિ વર્ષ | પાક વીમામાં 50% સુધીની છૂટ | KCC મર્યાદા ₹3 લાખ સુધી વધી | ઓર્ગેનિક ખેતી માટે મફત પ્રમાણપત્ર",
-            heroTitle: "🌾 કિસાન-સારથી AI - તમારા ડિજિટલ કૃષિ સારથી",
-            heroSubtitle: "AI ની શક્તિથી આધુનિક ખેતી કરો. હવામાનની માહિતીથી લઈને બજારના ભાવ સુધી, બધું એક જ જગ્યાએ.",
+            heroTitle: "AI વડે ભારતીય ખેડૂતોને સશક્ત બનાવવા",
+            heroSubtitle: "ખેતીનું ભવિષ્ય, હવે તમારી આંગળીઓ પર।",
             heroBtnStart: "હમણાં શરૂ કરો",
             heroBtnLearn: "વધુ જાણો",
+            dashboardTitle: "📅 આજનું ડેશબોર્ડ",
+            dashboardWeather: "હવામાન",
+            dashboardMarket: "બજાર મૂવર્સ",
+            dashboardTip: "આજની ટીપ",
+            dashboardChat: "ઝડપી ચેટ",
             servicesTitle: "🛠️ અમારી સેવાઓ",
             service1Title: "હવામાનની આગાહી",
             service1Desc: "15 દિવસની સચોટ હવામાનની આગાહી, વરસાદની સંભાવના અને ખેતી માટે સૂચનો.",
@@ -263,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
             service3Desc: "તમારા પાકનો ફોટો અપલોડ કરીને તરત જ જીવાતો અને રોગોને ઓળખો અને સારવાર માટે સૂચનો મેળવો.",
             service4Title: "બજારની માહિતી",
             service4Desc: "રીઅલ-ટાઇમ બજાર ભાવ, માંગ-પુરવઠાની સ્થિતિ અને વેચાણ માટેનો યોગ્ય સમય.",
-            mandiTitle: "� આજના બજાર ભાવ",
+            mandiTitle: "🏪 આજના બજાર ભાવ",
             mandiLocation: "વડોદરા બજાર",
             sellProductBtn: "તમારું ઉત્પાદન વેચો",
             quintal: "ક્વિન્ટલ",
@@ -279,9 +323,9 @@ document.addEventListener('DOMContentLoaded', function() {
             potato: "🥔 બટાકા",
             chilli: "🌶️ લીલા મરચા",
             chatbotTitle: "🤖 AI કૃષિ સલાહકાર",
-            chatbotHeader: "કિસાન-સારથી AI સહાયક",
+            chatbotHeader: "Prajanya AI Assistant",
             chatbotOnline: "🟢 ઓનલાઈન - તરત જવાબ મેળવો",
-            chatbotWelcome: "નમસ્તે! હું તમારો કિસાન-સારથી AI છું. તમે મને હવામાન, બજાર ભાવ, પાકના રોગો અથવા સરકારી યોજનાઓ વિશે કંઈપણ પૂછી શકો છો.",
+            chatbotWelcome: "નમસ્તે! હું તમારો Prajanya AI છું. તમે મને હવામાન, બજાર ભાવ, પાકના રોગો અથવા સરકારી યોજનાઓ વિશે કંઈપણ પૂછી શકો છો.",
             chatbotPlaceholder: "તમારો પ્રશ્ન અહીં લખો...",
             suggestedQuestions: "સૂચવેલા પ્રશ્નો:",
             qWeatherText: "હવામાન",
@@ -296,15 +340,15 @@ document.addEventListener('DOMContentLoaded', function() {
             support1Title: "હેલ્પલાઇન",
             support1Desc: "24x7 ઉપલબ્ધ",
             support2Title: "નિષ્ણાતની સલાહ",
-            support2Desc: "અનુભવી કૃષિ નિષ્ણાતો પાસેથી વીડિયો કૉલ દ્વારા સલાહ મેળવો.",
+            support2Desc: "કિસાન કોલ સેન્ટર: 1800-180-1551",
             bookAppointmentBtn: "એપોઇન્ટમેન્ટ બુક કરો",
             support3Title: "તાલીમ કાર્યક્રમો",
             support3Desc: "નવી તકનીકો માટે મફત ઓનલાઈન અને ઓફલાઈન તાલીમ.",
             viewCoursesBtn: "કોર્સ જુઓ",
             storiesTitle: "🌟 સફળતાની વાર્તાઓ",
-            farmer1Name: "રાજેશ પટેલ",
+            farmer1Name: "રાજેશ पटेल",
             farmer1Location: "વડોદરા, ગુજરાત",
-            farmer1Story: "\"કિસાન-સારથી AIની સલાહથી, મારા ટામેટાના પાકમાં 40% સુધારો થયો. AI સહાયકે યોગ્ય સમયે જીવાતોને ઓળખી કાઢ્યા.\"",
+            farmer1Story: "\"Prajanya AIની સલાહથી, મારા ટામેટાના પાકમાં 40% સુધારો થયો. AI સહાયકે યોગ્ય સમયે જીવાતોને ઓળખી કાઢ્યા.\"",
             farmer2Name: "સુનિતા શર્મા",
             farmer2Location: "આણંદ, ગુજરાત",
             farmer2Story: "\"સચોટ હવામાન માહિતીથી મેં વરસાદ પહેલાં મારો પાક બચાવી લીધો. મને બજાર ભાવ પણ સમયસર મળી જાય છે.\"",
@@ -338,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
             feedbackDesc: "તમારો પ્રતિસાદ અમારા માટે ખૂબ જ મહત્વપૂર્ણ છે",
             formRating: "રેટિંગ આપો",
             formFeedback: "તમારો પ્રતિસાદ",
-            feedbackSuccessMsg: "🙏 આભાર! તમારો પ્રતિસાદ સબમિટ કરવામાં આવ્યો છે.",
+            feedbackSuccessMsg: "� આભાર! તમારો પ્રતિસાદ સબમિટ કરવામાં આવ્યો છે.",
             policyTitle: "🏛️ નવીનતમ સરકારી નીતિઓ અને યોજનાઓ",
             policy1Title: "PM-KISAN યોજના વિસ્તરણ 2025",
             policy1Detail1: "લાભ: હવે ₹8,000 પ્રતિ વર્ષ (પહેલાં ₹6,000)",
@@ -355,25 +399,40 @@ document.addEventListener('DOMContentLoaded', function() {
             policy3Detail2: "ઓછો વ્યાજ દર: વાર્ષિક 4% (સબસિડી પછી)",
             policy3Detail3: "ડિજિટલ KCC: ઓનલાઈન અરજી, ત્વરિત મંજૂરી",
             policy3Detail4: "બહુ-ઉપયોગ: ખેતી, પશુપાલન અને મત્સ્યઉદ્યોગ માટે",
-            howToApply: "📱 અરજી કેવી રીતે કરવી?",
-            applyStep1: "કિસાન-સારથી AI એપ્લિકેશન પર 'સરકારી યોજનાઓ' વિભાગ પર જાઓ",
-            applyStep2: "તમારી પાત્રતા તપાસો",
-            applyStep3: "જરૂરી દસ્તાવેજો અપલોડ કરો",
-            applyStep4: "એક ક્લિકમાં અરજી સબમિટ કરો",
-            downloadAppBtn: "કિસાન-સારથી AI એપ્લિકેશન ડાઉનલોડ કરો",
+            govSitesTitle: "🔗 સત્તાવાર સરકારી સંસાધનો",
+            govSitePMKisan: "PM-KISAN સન્માન નિધિ",
+            govSiteAgriWelfare: "કૃષિ અને ખેડૂત કલ્યાણ વિભાગ",
+            govSiteEnam: "e-NAM (રાષ્ટ્રીય કૃષિ બજાર)",
+            govSiteSoilHealth: "જમીન આરોગ્ય કાર્ડ",
+            linksTitle: "મહત્વપૂર્ણ લિંક્સ",
+            trainingTitle: "🎓 તાલીમ વિડિઓઝ",
+            video1Title: "ડિજિટલ ખેતી",
+            video2Title: "જૈવિક ખેતી",
+            video3Title: "ટપક સિંચાઈ",
+            video4Title: "જમીન આરોગ્ય",
+            pestTitle: "🐛 AI જીવાત અને રોગની શોધ",
+            pestDesc: "નિદાન મેળવવા માટે અસરગ્રસ્ત પાકનો ફોટો અપલોડ કરો.",
+            imageUploadText: "જીવાત શોધવા માટે છબી:",
         },
         mr: {
+            autofillBtn: "माझी माहिती भरा",
             skipLink: "मुख्य सामग्रीवर जा",
+            navDashboard: "डॅशबोर्ड",
             navServices: "सेवा",
             navMandi: "बाजार",
             navChatbot: "AI सहाय्यक",
             navSupport: "सहाय्य",
             navPolicies: "धोरणे",
             marqueeText: "📢 PM-KISAN योजना विस्तार: आता ₹8,000 प्रति वर्ष | पीक विम्यावर 50% पर्यंत सूट | KCC मर्यादा ₹3 लाखांपर्यंत वाढली | सेंद्रिय शेतीसाठी मोफत प्रमाणपत्र",
-            heroTitle: "🌾 किसान-सारथी AI - तुमचा डिजिटल कृषी सारथी",
-            heroSubtitle: "AI च्या शक्तीने आधुनिक शेती करा. हवामानाच्या माहितीपासून ते बाजाराच्या भावापर्यंत, सर्व काही एकाच ठिकाणी.",
+            heroTitle: "AI सह भारतीय शेतकऱ्यांना सक्षम करणे",
+            heroSubtitle: "शेतीचे भविष्य, आता तुमच्या बोटांच्या टोकावर.",
             heroBtnStart: "सुरुवात करा",
             heroBtnLearn: "अधिक जाणून घ्या",
+            dashboardTitle: "📅 आजचा डॅशबोर्ड",
+            dashboardWeather: "हवामान",
+            dashboardMarket: "बाजार मूव्हर्स",
+            dashboardTip: "आजचा सल्ला",
+            dashboardChat: "द्रुत चॅट",
             servicesTitle: "🛠️ आमच्या सेवा",
             service1Title: "हवामान अंदाज",
             service1Desc: "15-दिवसांचा अचूक हवामान अंदाज, पावसाची शक्यता आणि शेतीसाठी सल्ला.",
@@ -399,9 +458,9 @@ document.addEventListener('DOMContentLoaded', function() {
             potato: "🥔 बटाटा",
             chilli: "🌶️ हिरवी मिरची",
             chatbotTitle: "🤖 AI कृषी सल्लागार",
-            chatbotHeader: "किसान-सारथी AI सहाय्यक",
+            chatbotHeader: "Prajanya AI Assistant",
             chatbotOnline: "🟢 ऑनलाइन - त्वरित उत्तरे मिळवा",
-            chatbotWelcome: "नमस्कार! मी तुमचा किसान-सारथी AI आहे. तुम्ही मला हवामान, बाजार भाव, पिकांचे रोग किंवा सरकारी योजनांबद्दल काहीही विचारू शकता.",
+            chatbotWelcome: "नमस्कार! मी तुमचा Prajanya AI आहे. तुम्ही मला हवामान, बाजार भाव, पिकांचे रोग किंवा सरकारी योजनांबद्दल काहीही विचारू शकता.",
             chatbotPlaceholder: "तुमचा प्रश्न येथे लिहा...",
             suggestedQuestions: "सुचवलेले प्रश्न:",
             qWeatherText: "हवामान",
@@ -416,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
             support1Title: "हेल्पलाइन",
             support1Desc: "24x7 उपलब्ध",
             support2Title: "तज्ञ सल्ला",
-            support2Desc: "अनुभवी कृषी तज्ञांकडून व्हिडिओ कॉलद्वारे सल्ला मिळवा.",
+            support2Desc: "किसान कॉल सेंटर: 1800-180-1551",
             bookAppointmentBtn: "अपॉइंटमेंट बुक करा",
             support3Title: "प्रशिक्षण कार्यक्रम",
             support3Desc: "नवीन तंत्रज्ञानासाठी मोफत ऑनलाइन आणि ऑफलाइन प्रशिक्षण.",
@@ -424,8 +483,8 @@ document.addEventListener('DOMContentLoaded', function() {
             storiesTitle: "🌟 यशोगाथा",
             farmer1Name: "राजेश पटेल",
             farmer1Location: "वडोदरा, गुजरात",
-            farmer1Story: "\"किसान-सारथी AI च्या सल्ल्याने माझ्या टोमॅटोच्या पिकात 40% सुधारणा झाली. AI सहाय्यकाने योग्य वेळी कीड ओळखली.\"",
-            farmer2Name: "सुनीता शर्मा",
+            farmer1Story: "\"Prajanya AI च्या सल्ल्याने माझ्या टोमॅटोच्या पिकात 40% सुधारणा झाली. AI सहाय्यकाने योग्य वेळी कीड ओळखली.\"",
+            farmer2Name: "सुनीતા शर्मा",
             farmer2Location: "आनंद, गुजरात",
             farmer2Story: "\"अचूक हवामान माहितीमुळे मी पावसापूर्वी माझे पीक वाचवले. मला बाजाराचे भावही वेळेवर मिळतात.\"",
             farmer3Name: "विकास गुप्ता",
@@ -475,12 +534,20 @@ document.addEventListener('DOMContentLoaded', function() {
             policy3Detail2: "कमी व्याज दर: वार्षिक 4% (अनुदानानंतर)",
             policy3Detail3: "डिजिटल KCC: ऑनलाइन अर्ज, त्वरित मंजुरी",
             policy3Detail4: "बहु-उपयोग: शेती, पशुपालन आणि मत्स्यपालनासाठी",
-            howToApply: "📱 अर्ज कसा करावा?",
-            applyStep1: "किसान-सारथी AI ॲपवरील 'सरकारी योजना' विभागात जा",
-            applyStep2: "तुमची पात्रता तपासा",
-            applyStep3: "आवश्यक कागदपत्रे अपलोड करा",
-            applyStep4: "एका क्लिकमध्ये अर्ज सबमिट करा",
-            downloadAppBtn: "किसान-सारथी AI ॲप डाउनलोड करा",
+            govSitesTitle: "🔗 अधिकृत सरकारी संसाधने",
+            govSitePMKisan: "PM-KISAN सन्मान निधी",
+            govSiteAgriWelfare: "कृषी आणि शेतकरी कल्याण विभाग",
+            govSiteEnam: "e-NAM (राष्ट्रीय कृषी बाजार)",
+            govSiteSoilHealth: "मृदा आरोग्य कार्ड",
+            linksTitle: "महत्वपूर्ण लिंक्स",
+            trainingTitle: "🎓 प्रशिक्षण व्हिडिओ",
+            video1Title: "डिजिटल शेती",
+            video2Title: "सेंद्रिय शेती",
+            video3Title: "ठिबक सिंचन",
+            video4Title: "मृदा आरोग्य",
+            pestTitle: "🐛 AI कीड आणि रोग ओळख",
+            pestDesc: "निदान मिळविण्यासाठी प्रभावित पिकाचा फोटो अपलोड करा.",
+            imageUploadText: "कीटक शोधण्यासाठी प्रतिमा:",
         }
     };
     
@@ -520,13 +587,81 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // --- BACKEND API INTEGRATION ---
-    const CHAT_API_URL = "https://chat-service-l3dm.onrender.com/chat";
+    const CHAT_API_URL = "http://localhost:8002/chat";
+    const PEST_API_URL = "http://localhost:5000/predict";
+
+    // --- VOICE I/O STATE & SETUP ---
+    let isVoiceOutputEnabled = false;
+    const toggleVoiceBtn = document.getElementById('toggle-voice-btn');
+    const micBtn = document.getElementById('mic-btn');
+    const messageInput = document.getElementById('messageInput');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition;
+
+    const langCodeMap = {
+        en: 'en-US',
+        hi: 'hi-IN',
+        gu: 'gu-IN',
+        mr: 'mr-IN'
+    };
+    
+    if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.interimResults = false;
+
+        recognition.addEventListener('result', e => {
+            const transcript = Array.from(e.results)
+                .map(result => result[0])
+                .map(result => result.transcript)
+                .join('');
+            messageInput.value = transcript;
+            sendMessage();
+        });
+        
+        recognition.addEventListener('end', () => {
+            micBtn.classList.remove('is-listening');
+        });
+        
+        recognition.addEventListener('error', (event) => {
+            console.error("Speech recognition error:", event.error);
+            micBtn.classList.remove('is-listening');
+        });
+
+        micBtn.addEventListener('click', () => {
+            if (micBtn.classList.contains('is-listening')) {
+                recognition.stop();
+            } else {
+                micBtn.classList.add('is-listening');
+                recognition.lang = langCodeMap[localStorage.getItem('language') || 'hi'];
+                recognition.start();
+            }
+        });
+
+    } else {
+        micBtn.style.display = 'none';
+        console.warn("Speech Recognition not supported in this browser.");
+    }
+
+    toggleVoiceBtn.addEventListener('click', () => {
+        isVoiceOutputEnabled = !isVoiceOutputEnabled;
+        toggleVoiceBtn.classList.toggle('is-active', isVoiceOutputEnabled);
+        if (!isVoiceOutputEnabled) {
+            window.speechSynthesis.cancel(); // Stop any ongoing speech
+        }
+    });
+
+    function speakText(text) {
+        if (!isVoiceOutputEnabled || !window.speechSynthesis) return;
+        window.speechSynthesis.cancel(); // Cancel previous speech
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = langCodeMap[localStorage.getItem('language') || 'hi'];
+        window.speechSynthesis.speak(utterance);
+    }
 
     // --- CHATBOT ENHANCEMENT ---
     const sendMessage = async function() {
-        const input = document.getElementById('messageInput');
         const messagesContainer = document.getElementById('chatMessages');
-        const userQuery = input.value.trim();
+        const userQuery = messageInput.value.trim();
         if (userQuery === '') return;
 
         // Add user message
@@ -534,7 +669,7 @@ document.addEventListener('DOMContentLoaded', function() {
         userMessage.className = 'message user';
         userMessage.textContent = userQuery;
         messagesContainer.appendChild(userMessage);
-        input.value = '';
+        messageInput.value = '';
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         // Show bot typing indicator
@@ -558,97 +693,36 @@ document.addEventListener('DOMContentLoaded', function() {
             typeResponse(botMessage, data.response);
         } catch (error) {
             console.error("Error calling Chat Service:", error);
-            typeResponse(botMessage, "माफ़ कीजिए, AI से संपर्क करने में कोई समस्या हुई। कृपया बाद में प्रयास करें।");
+            typeResponse(botMessage, "Connection to the AI service failed. This might be due to an ad blocker or because the local backend server is not running. Please check your browser extensions and ensure the server is active.");
         }
     };
 
-    // --- MARKET PRICE FETCHER ---
-    async function fetchMarketPrices(marketName = "") {
+    // --- MARKET PRICE FETCHER (Original Static Version) ---
+    function fetchMarketPrices() {
         const container = document.getElementById('produce-grid-container');
-        const lang = localStorage.getItem('language') || 'hi';
-        container.innerHTML = translations[lang]?.loadingText || "Loading...";
-    
-        try {
-            const response = await fetch(`https://market-services.onrender.com/market-prices?market_name=${encodeURIComponent(marketName)}`);
-            if (!response.ok) throw new Error(translations[lang]?.fetchError || "Network error");
-            
-            const prices = await response.json();
-            if (!prices.length) {
-                container.innerHTML = `<p>${translations[lang]?.noData || "No data found"}</p>`;
-                return;
-            }
-
-          prices.forEach(item => {
+        const prices = [
+            { commodity: "Wheat", modal_price: 2200 },
+            { commodity: "Paddy", modal_price: 1800 },
+            { commodity: "Onion", modal_price: 1500 },
+            { commodity: "Tomato", modal_price: 1200 },
+            { commodity: "Potato", modal_price: 1000 },
+            { commodity: "Green Chilli", modal_price: 3000 },
+        ];
+        
+        container.innerHTML = ''; // Clear existing content
+        prices.forEach(item => {
             const card = document.createElement('article');
             card.className = 'produce-card';
             card.tabIndex = 0;
             card.innerHTML = `
-              <h3>${item.commodity} ${item.variety ? `(${item.variety})` : ""}</h3>
-              <p><strong>Market:</strong> ${item.market}, ${item.state}</p>
-              <p><strong>Price:</strong> ₹${item.modal_price}/quintal</p>
-              <p><strong>Min:</strong> ₹${item.min_price} | <strong>Max:</strong> ₹${item.max_price}</p>
+                <h3>🌾 ${item.commodity}</h3>
+                <p class="price">₹${item.modal_price}/<span data-key="quintal">क्विंटल</span></p>
             `;
             container.appendChild(card);
-          });
-        } catch (err) {
-        console.error("Error:", err);
-        container.innerHTML = `<p>${translations[lang]?.fetchError || "Error loading data"}</p>`;
-        }
-    }
-      
-    document.getElementById('marketSearchBtn').addEventListener('click', () => {
-        const marketName = document.getElementById('marketSearchInput').value.trim();
-        fetchMarketPrices(marketName || "");
-    });    
-  
-    let allMarkets = [];
-
-    // Fetch all markets once on load
-    async function loadMarketsList() {
-        try {
-            const response = await fetch("https://market-services.onrender.com/market-prices");
-            const prices = await response.json();
-            allMarkets = Array.from(new Set(prices.map(item => item.market)));  // unique markets
-        } catch (err) {
-            console.error("Failed to load markets list:", err);
-        }
-    }
-
-    // Show suggestions while typing
-    document.getElementById('marketSearchInput').addEventListener('input', function () {
-        const query = this.value.toLowerCase();
-        const suggestionsBox = document.getElementById('suggestions');
-        suggestionsBox.innerHTML = '';
-
-        if (!query) {
-            suggestionsBox.style.display = 'none';
-            return;
-        }
-
-        const filtered = allMarkets.filter(m => m.toLowerCase().includes(query));
-        if (filtered.length === 0) {
-            suggestionsBox.style.display = 'none';
-            return;
-        }
-
-        filtered.slice(0, 10).forEach(market => {
-            const div = document.createElement('div');
-            div.textContent = market;
-            div.addEventListener('click', () => {
-                document.getElementById('marketSearchInput').value = market;
-                suggestionsBox.style.display = 'none';
-                fetchMarketPrices(market);
-            });
-            suggestionsBox.appendChild(div);
         });
+    }
 
-        suggestionsBox.style.display = 'block';
-    });
-
-    // Load default prices on page load
-    loadMarketsList();
-    fetchMarketPrices();
-
+    fetchMarketPrices(); // Fetch prices on page load
 
     // --- SALES PITCH GENERATOR ---
     const generateSalesPitch = async function() {
@@ -714,6 +788,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(typeChar, 15);
             } else {
                 announceToScreenReader('AI का जवाब तैयार है');
+                speakText(text); // Speak the final response
             }
         }
         typeChar();
@@ -721,11 +796,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Predefined question functionality
     const askPredefinedQuestion = function(question) {
-        const input = document.getElementById('messageInput');
-        input.value = question;
+        messageInput.value = question;
         sendMessage();
     }
     
+    // --- AUTO-FILL FUNCTIONALITY ---
+    function autoFillForm() {
+        document.getElementById('sellerName').value = userProfile.name;
+        document.getElementById('sellerLocation').value = userProfile.location;
+        document.getElementById('sellerPhone').value = userProfile.phone;
+    }
+
     // Enhanced modal functionality
     const openSellerModal = function() {
         const modal = document.getElementById('sellerModal');
@@ -759,6 +840,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     const closePolicyModal = function() {
         const modal = document.getElementById('policyModal');
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+    }
+    const openTrainingModal = function() {
+        const modal = document.getElementById('trainingModal');
+        modal.style.display = 'block';
+        modal.setAttribute('aria-hidden', 'false');
+    }
+    const closeTrainingModal = function() {
+        const modal = document.getElementById('trainingModal');
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
     }
@@ -848,7 +939,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Enhanced keyboard navigation
-    document.getElementById('messageInput').addEventListener('keypress', e => {
+    messageInput.addEventListener('keypress', e => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             sendMessage();
@@ -866,7 +957,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollToChatbot = function() {
         const chatbotSection = document.getElementById('chatbot');
         chatbotSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(() => document.getElementById('messageInput').focus(), 500);
+        setTimeout(() => messageInput.focus(), 500);
     }
     
     // Language switcher enhancement
@@ -890,11 +981,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        const input = document.getElementById('messageInput');
         if (translations[lang] && translations[lang].chatbotPlaceholder) {
-            input.placeholder = translations[lang].chatbotPlaceholder;
+            messageInput.placeholder = translations[lang].chatbotPlaceholder;
         }
         localStorage.setItem('language', lang);
+        // Update speech recognition language if it exists
+        if (recognition) {
+            recognition.lang = langCodeMap[lang];
+        }
     }
 
     const savedLang = localStorage.getItem('language') || 'hi';
@@ -935,11 +1029,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Intersection observer for animations
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
         });
     }, { threshold: 0.1 });
     
-    document.querySelectorAll('section, .mandi-header, .services-grid, .support-options').forEach(el => observer.observe(el));
+    document.querySelectorAll('section').forEach(el => observer.observe(el));
     
     // Modal accessibility enhancements
     function trapFocus(modal) {
@@ -980,15 +1076,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // --- CHATBOT IMAGE UPLOAD ---
+    const uploadImageBtn = document.getElementById('uploadImageBtn');
+    const chatImageUpload = document.getElementById('chatImageUpload');
+
+    uploadImageBtn.addEventListener('click', () => chatImageUpload.click());
+
+    chatImageUpload.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageUrl = e.target.result;
+            const messagesContainer = document.getElementById('chatMessages');
+            
+            // Add user message with image preview
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = `
+                <p data-key="imageUploadText">Image for pest detection:</p>
+                <img src="${imageUrl}" alt="Uploaded crop image" style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+            `;
+            messagesContainer.appendChild(userMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            chatImageUpload.value = ''; // Reset file input
+
+            // Show bot typing indicator
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
+            botMessage.innerHTML = '<span class="typing">AI is analyzing the image...</span>';
+            messagesContainer.appendChild(botMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Mock backend call and response
+            setTimeout(() => {
+                const mockResponse = "Analysis complete. This looks like **Tomato Leaf Mold**. I recommend applying a copper-based fungicide. Avoid overhead watering to reduce humidity around the plants.";
+                typeResponse(botMessage, mockResponse);
+            }, 2500);
+        }
+        reader.readAsDataURL(file);
+    });
+
     // --- ATTACH ALL EVENT LISTENERS ---
     document.getElementById('policyLink').addEventListener('click', openPolicyModal);
     document.getElementById('openSellerModalBtn').addEventListener('click', openSellerModal);
+    document.getElementById('autofillBtn').addEventListener('click', autoFillForm);
     document.querySelector('.send-btn').addEventListener('click', sendMessage);
     document.getElementById('floatingChatbot').addEventListener('click', scrollToChatbot);
     document.getElementById('generatePitchBtn').addEventListener('click', generateSalesPitch);
     document.getElementById('copyPitchBtn').addEventListener('click', () => copyToClipboard('salesPitchText', document.getElementById('copyPitchBtn')));
-    document.getElementById('downloadAppBtn').addEventListener('click', () => alert('यह डेमो वर्शन है। वास्तविक ऐप में यह सुविधा उपलब्ध होगी।'));
-
+    document.getElementById('trainingCard').addEventListener('click', openTrainingModal);
+    
     document.querySelectorAll('.modal .close').forEach(btn => {
         btn.addEventListener('click', () => {
             btn.closest('.modal').style.display = 'none';

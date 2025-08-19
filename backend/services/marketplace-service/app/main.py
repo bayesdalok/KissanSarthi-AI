@@ -11,7 +11,7 @@ models.Base.metadata.create_all(bind=database.engine)
 app = FastAPI(title="Kisan-Sarthi Marketplace Service")
 
 # --- CORS Middleware ---
-origins = ["http://localhost", "http://localhost:8000","https://kisaansarthi-ai.vercel.app", "null"]
+origins = ["http://localhost", "http://localhost:8000","https://prajanya-ai.vercel.app", "null"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

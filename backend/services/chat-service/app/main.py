@@ -16,7 +16,7 @@ app = FastAPI(title="Kisan-Sarthi Chat Service")
 
 # Allow multiple origins during development
 origins = [
-    "https://kisaansarthi-ai.vercel.app",
+    "https://prajanya-ai.vercel.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
@@ -77,7 +77,7 @@ async def handle_chat(query: models.ChatQuery, db: Session = Depends(get_db)):
 
     # 2. Construct a detailed, context-rich prompt for the Gemini API
     prompt = f"""
-    You are 'Kisan-Sarthi AI', a helpful AI agricultural advisor for Indian farmers.
+    You are 'Prajanya AI', a helpful AI agricultural advisor for Indian farmers.
     Your primary language is '{query.language}'. Please provide a helpful and concise answer in the same language.
 
     Before answering, review the following verified information from the Kisan Call Centre transcripts.

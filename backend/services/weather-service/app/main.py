@@ -5,12 +5,12 @@ from fastapi.middleware.cors import CORSMiddleware # <-- ADD THIS
 from .models import WeatherResponse, DailyForecast
 import datetime
 
-app = FastAPI(title="Kisan-Sarthi Weather Service")
+app = FastAPI(title="Prajanya-AI Weather Service")
 
 # --- ADD THIS MIDDLEWARE BLOCK ---
 # Allow multiple origins during development
 origins = [
-    "https://kisaansarthi-ai.vercel.app",
+    "https://prajanya-ai.vercel.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]

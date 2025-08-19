@@ -56,7 +56,7 @@ services:
 
   marketplace-service:
     build: ./services/marketplace-service
-    container_name: kisan-sarthi-marketplace-service
+    container_name: Prajanya-AI-marketplace-service
     ports:
       - "8004:80" # Running on host port 8004
     depends_on:
