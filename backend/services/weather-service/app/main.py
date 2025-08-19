@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware # <-- ADD THIS
 from .models import WeatherResponse, DailyForecast
 import datetime
 
-app = FastAPI(title="Kisan-Sarthi Weather Service")
+app = FastAPI(title="Prajanya-AI Weather Service")
 
 # --- ADD THIS MIDDLEWARE BLOCK ---
 # Allow multiple origins during development

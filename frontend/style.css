@@ -104,7 +104,7 @@
     
     .nav-links {
         display: flex;
-        gap: 0.5rem; /* Reduced gap */
+        gap: 1rem; 
         list-style: none;
     }
     
@@ -113,7 +113,7 @@
         font-weight: 600;
         text-decoration: none;
         transition: var(--transition);
-        padding: 0.5rem 0.8rem; /* Reduced horizontal padding */
+        padding: 0.5rem 1rem;
         border-radius: var(--border-radius);
         white-space: nowrap; /* Prevent wrapping */
     }
@@ -157,14 +157,15 @@
         outline: none;
     }
     
-    /* Hero Section */
+    /* --- HERO SECTION UPDATE --- */
     .hero {
         padding: 10rem 2rem 6rem;
         text-align: center;
         position: relative;
         overflow: hidden;
         color: white;
-        background-image: url('https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1974&auto=format&fit=crop');
+        /* Updated background image */
+        background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop');
         background-size: cover;
         background-position: center;
     }
@@ -176,7 +177,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.5); /* Dark overlay */
+        /* Slightly darker overlay for better text readability */
+        background: rgba(0,0,0,0.6); 
         z-index: 1;
     }
     
@@ -324,6 +326,13 @@
         margin: 0 auto;
     }
     
+    /* --- UI FIX: Service Card Links --- */
+    .service-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
     /* Enhanced Cards */
     .service-card,
     .produce-card,
@@ -339,6 +348,7 @@
         transition: var(--transition);
         position: relative;
         overflow: hidden;
+        height: 100%; /* Ensure cards in a row are same height */
     }
     
     .service-card:hover,
@@ -356,6 +366,23 @@
         color: var(--primary-green);
     }
     
+    /* --- UI FIX: Clickable Card Indicator --- */
+    #trainingCard::after {
+        content: '➔';
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: var(--primary-green);
+        font-size: 1.5rem;
+        opacity: 0;
+        transition: var(--transition);
+    }
+
+    #trainingCard:hover::after {
+        opacity: 1;
+        transform: translateX(-5px);
+    }
+
     /* Enhanced Chatbot Section */
     .chatbot-demo {
         background: white;
@@ -440,7 +467,7 @@
         border-top: 1px solid #e0e0e0;
     }
     
-    .chat-input input {
+    .chat-input input[type="text"] {
         flex: 1;
         padding: 0.8rem;
         border: 1px solid #e0e0e0;
@@ -449,12 +476,12 @@
         transition: var(--transition);
     }
     
-    .chat-input input:focus {
+    .chat-input input[type="text"]:focus {
         border-color: var(--primary-green);
         box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
     }
     
-    .send-btn, .mic-btn {
+    .send-btn, .mic-btn, .upload-btn {
         background: var(--primary-green);
         color: white;
         border: none;
@@ -462,12 +489,15 @@
         border-radius: var(--border-radius);
         cursor: pointer;
         transition: var(--transition);
+        flex-shrink: 0;
     }
     
     .send-btn:hover,
     .send-btn:focus,
     .mic-btn:hover,
-    .mic-btn:focus {
+    .mic-btn:focus,
+    .upload-btn:hover,
+    .upload-btn:focus {
         background: var(--dark-green);
         outline: none;
     }
@@ -741,6 +771,7 @@
         .nav-links {
             flex-wrap: wrap;
             justify-content: center;
+            gap: 0.5rem;
         }
         
         .hero {

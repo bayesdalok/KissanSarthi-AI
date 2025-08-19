@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-            
+    
     // --- MOCK USER PROFILE ---
     const userProfile = {
         name: "राजेश पटेल",
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navSupport: "Support",
             navPolicies: "Policies",
             marqueeText: "📢 PM-KISAN Scheme Extended: Now ₹8,000 per year | Up to 50% discount on crop insurance | KCC limit increased to ₹3 lakh | Free certification for organic farming",
-            heroTitle: "🌾 Prajanya AI",
+            heroTitle: "Empowering Indian Farmers with AI",
             heroSubtitle: "The future of farming, now at your fingertips.",
             heroBtnStart: "Get Started",
             heroBtnLearn: "Learn More",
@@ -142,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             video4Title: "Soil Health",
             pestTitle: "🐛 AI Pest & Disease Detection",
             pestDesc: "Upload a photo of the affected crop to get a diagnosis.",
+            imageUploadText: "Image for pest detection:",
         },
         hi: {
             autofillBtn: "मेरी जानकारी भरें",
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navSupport: "सहायता",
             navPolicies: "नीतियां",
             marqueeText: "📢 PM-KISAN योजना विस्तार: अब ₹8,000 प्रति वर्ष | फसल बीमा में 50% तक की छूट | KCC की लिमिट बढ़कर ₹3 लाख | ऑर्गेनिक खेती के लिए मुफ्त सर्टिफिकेशन",
-            heroTitle: "🌾 Prajanya AI",
+            heroTitle: "AI के साथ भारतीय किसानों को सशक्त बनाना",
             heroSubtitle: "खेती का भविष्य, अब आपकी उंगलियों पर।",
             heroBtnStart: "अभी शुरू करें",
             heroBtnLearn: "और जानें",
@@ -276,6 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
             video4Title: "मृदा स्वास्थ्य",
             pestTitle: "🐛 AI कीट और रोग का पता लगाना",
             pestDesc: "निदान प्राप्त करने के लिए प्रभावित फसल का फोटो अपलोड करें।",
+            imageUploadText: "कीट का पता लगाने के लिए छवि:",
         },
         gu: {
             autofillBtn: "મારી વિગતો ભરો",
@@ -287,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navSupport: "સહાય",
             navPolicies: "નીતિઓ",
             marqueeText: "📢 PM-KISAN યોજના વિસ્તરણ: હવે ₹8,000 પ્રતિ વર્ષ | પાક વીમામાં 50% સુધીની છૂટ | KCC મર્યાદા ₹3 લાખ સુધી વધી | ઓર્ગેનિક ખેતી માટે મફત પ્રમાણપત્ર",
-            heroTitle: "🌾 Prajanya AI",
+            heroTitle: "AI વડે ભારતીય ખેડૂતોને સશક્ત બનાવવા",
             heroSubtitle: "ખેતીનું ભવિષ્ય, હવે તમારી આંગળીઓ પર।",
             heroBtnStart: "હમણાં શરૂ કરો",
             heroBtnLearn: "વધુ જાણો",
@@ -380,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
             feedbackDesc: "તમારો પ્રતિસાદ અમારા માટે ખૂબ જ મહત્વપૂર્ણ છે",
             formRating: "રેટિંગ આપો",
             formFeedback: "તમારો પ્રતિસાદ",
-            feedbackSuccessMsg: "🙏 આભાર! તમારો પ્રતિસાદ સબમિટ કરવામાં આવ્યો છે.",
+            feedbackSuccessMsg: "� આભાર! તમારો પ્રતિસાદ સબમિટ કરવામાં આવ્યો છે.",
             policyTitle: "🏛️ નવીનતમ સરકારી નીતિઓ અને યોજનાઓ",
             policy1Title: "PM-KISAN યોજના વિસ્તરણ 2025",
             policy1Detail1: "લાભ: હવે ₹8,000 પ્રતિ વર્ષ (પહેલાં ₹6,000)",
@@ -410,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
             video4Title: "જમીન આરોગ્ય",
             pestTitle: "🐛 AI જીવાત અને રોગની શોધ",
             pestDesc: "નિદાન મેળવવા માટે અસરગ્રસ્ત પાકનો ફોટો અપલોડ કરો.",
+            imageUploadText: "જીવાત શોધવા માટે છબી:",
         },
         mr: {
             autofillBtn: "माझी माहिती भरा",
@@ -421,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navSupport: "सहाय्य",
             navPolicies: "धोरणे",
             marqueeText: "📢 PM-KISAN योजना विस्तार: आता ₹8,000 प्रति वर्ष | पीक विम्यावर 50% पर्यंत सूट | KCC मर्यादा ₹3 लाखांपर्यंत वाढली | सेंद्रिय शेतीसाठी मोफत प्रमाणपत्र",
-            heroTitle: "🌾 Prajanya AI - तुमचा डिजिटल कृषी सारथी",
+            heroTitle: "AI सह भारतीय शेतकऱ्यांना सक्षम करणे",
             heroSubtitle: "शेतीचे भविष्य, आता तुमच्या बोटांच्या टोकावर.",
             heroBtnStart: "सुरुवात करा",
             heroBtnLearn: "अधिक जाणून घ्या",
@@ -544,6 +547,7 @@ document.addEventListener('DOMContentLoaded', function() {
             video4Title: "मृदा आरोग्य",
             pestTitle: "🐛 AI कीड आणि रोग ओळख",
             pestDesc: "निदान मिळविण्यासाठी प्रभावित पिकाचा फोटो अपलोड करा.",
+            imageUploadText: "कीटक शोधण्यासाठी प्रतिमा:",
         }
     };
     
@@ -1070,6 +1074,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 target.scrollIntoView({ behavior: 'smooth' });
             }
         });
+    });
+
+    // --- CHATBOT IMAGE UPLOAD ---
+    const uploadImageBtn = document.getElementById('uploadImageBtn');
+    const chatImageUpload = document.getElementById('chatImageUpload');
+
+    uploadImageBtn.addEventListener('click', () => chatImageUpload.click());
+
+    chatImageUpload.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageUrl = e.target.result;
+            const messagesContainer = document.getElementById('chatMessages');
+            
+            // Add user message with image preview
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = `
+                <p data-key="imageUploadText">Image for pest detection:</p>
+                <img src="${imageUrl}" alt="Uploaded crop image" style="max-width: 100%; border-radius: 8px; margin-top: 8px;">
+            `;
+            messagesContainer.appendChild(userMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            chatImageUpload.value = ''; // Reset file input
+
+            // Show bot typing indicator
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
+            botMessage.innerHTML = '<span class="typing">AI is analyzing the image...</span>';
+            messagesContainer.appendChild(botMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Mock backend call and response
+            setTimeout(() => {
+                const mockResponse = "Analysis complete. This looks like **Tomato Leaf Mold**. I recommend applying a copper-based fungicide. Avoid overhead watering to reduce humidity around the plants.";
+                typeResponse(botMessage, mockResponse);
+            }, 2500);
+        }
+        reader.readAsDataURL(file);
     });
 
     // --- ATTACH ALL EVENT LISTENERS ---
